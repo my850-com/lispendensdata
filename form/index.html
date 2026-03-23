@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LisPendensData - Request Form</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .form-container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      max-width: 500px;
+      width: 100%;
+      padding: 40px;
+      position: relative;
+    }
+    .form-container::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 5px;
+      background: linear-gradient(90deg, #4285f4, #34a853, #fb9c05, #ea4335);
+    }
+    .logo { text-align: center; margin-bottom: 30px; }
+    .logo h1 { color: #1e3c72; font-size: 28px; font-weight: 700; }
+    .logo h1 span { color: #c9a227; }
+    .logo p { color: #666; font-size: 14px; }
+    .form-header { text-align: center; margin-bottom: 30px; }
+    .form-header h2 { color: #333; font-size: 24px; margin-bottom: 10px; }
+    .form-header p { color: #666; font-size: 15px; }
+    .form-group { margin-bottom: 24px; }
+    .form-group label { display: block; margin-bottom: 8px; color: #333; font-weight: 500; }
+    .form-group label .required { color: #ea4335; margin-left: 2px; }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 14px 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none; border-color: #4285f4;
+      box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.1);
+    }
+    .submit-btn {
+      width: 100%; padding: 16px;
+      background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+      color: white; border: none; border-radius: 8px;
+      font-size: 16px; font-weight: 600; cursor: pointer;
+    }
+    .success-message { display: none; text-align: center; padding: 40px 20px; }
+    .success-message.show { display: block; }
+    .success-icon {
+      width: 80px; height: 80px; background: #34a853;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .success-icon::after { content: '✓'; color: white; font-size: 40px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <div class="logo">
+      <h1>LisPendens<span>Data</span></h1>
+      <p>Nationwide Foreclosure Data</p>
+    </div>
+    
+    <div class="form-content" id="formContent">
+      <div class="form-header">
+        <h2>Get Your County Data</h2>
+        <p>Request lis pendens data for any US county.</p>
+      </div>
+      
+      <form id="fplForm" action="https://script.google.com/macros/s/AKfycbweLSunBXMplV-kOx0U2G7GlNgcLOelktwTtGSpz_fh63KevgbPK7WLmYM1-9XDdCIA/exec" method="POST">
+        <div class="form-group">
+          <label>Your First Name <span class="required">*</span></label>
+          <input type="text" name="name" placeholder="John" required>
+        </div>
+        <div class="form-group">
+          <label>County <span class="required">*</span></label>
+          <input type="text" name="county" placeholder="e.g., Bay County" required>
+        </div>
+        <div class="form-group">
+          <label>Phone Number <span class="required">*</span></label>
+          <input type="tel" name="phone" placeholder="(850) 555-1234" required>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" name="email" placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label>Job Title / Role</label>
+          <input type="text" name="job_title" placeholder="e.g., Real Estate Attorney">
+        </div>
+        <div class="form-group">
+          <label>Additional Notes</label>
+          <textarea name="notes" placeholder="Specific data needs..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Request Data Count</button>
+      </form>
+    </div>
+    
+    <div class="success-message" id="successMessage">
+      <div class="success-icon"></div>
+      <h3>Thank You!</h3>
+      <p>Your request has been submitted. We'll contact you within 24 hours.</p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('fplForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var form = e.target;
+      var data = new FormData(form);
+      
+      fetch(form.action, {
+        method: 'POST',
+        body: new URLSearchParams(data),
+        mode: 'no-cors'
+      }).then(function() {
+        showSuccess();
+      }).catch(function() {
+        showSuccess();
+      });
+    });
+    
+    function showSuccess() {
+      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('successMessage').classList.add('show');
+    }
+  </script>
+</body>
+</html>
