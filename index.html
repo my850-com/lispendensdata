@@ -66,6 +66,80 @@
       transform: translateY(-2px);
     }
     
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    
+    .nav-item {
+      position: relative;
+    }
+    
+    .nav-item > a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      transition: color 0.3s;
+    }
+    
+    .nav-item:hover > a {
+      color: var(--gold);
+    }
+    
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      padding: 1.5rem;
+      min-width: 600px;
+      display: none;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      z-index: 1001;
+    }
+    
+    .nav-item:hover .dropdown {
+      display: grid;
+    }
+    
+    .dropdown-column h4 {
+      color: var(--navy);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gold);
+    }
+    
+    .dropdown-column a {
+      display: block;
+      color: var(--text);
+      text-decoration: none;
+      padding: 0.35rem 0;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+    
+    .dropdown-column a:hover {
+      color: var(--green);
+    }
+    
+    .live-badge {
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.65rem;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-weight: 700;
+      margin-left: 4px;
+    }
+    
     /* Hero Section */
     .hero {
       background: linear-gradient(135deg, var(--navy) 0%, #1e4a73 100%);
@@ -448,6 +522,61 @@
   <nav class="navbar">
     <div class="nav-container">
       <a href="/" class="logo">LisPendens<span>Data</span></a>
+      
+      <div class="nav-menu">
+        <div class="nav-item has-dropdown">
+          <a href="#">States</a>
+          <div class="dropdown">
+            <div class="dropdown-column">
+              <h4>Northeast</h4>
+              <a href="/states/connecticut/">Connecticut</a>
+              <a href="/states/delaware/">Delaware</a>
+              <a href="/states/maine/">Maine</a>
+              <a href="/states/new-jersey/">New Jersey</a>
+              <a href="/states/new-york/">New York</a>
+              <a href="/states/vermont/">Vermont</a>
+              <a href="/states/pennsylvania/">Pennsylvania</a>
+            </div>
+            <div class="dropdown-column">
+              <h4>Southeast</h4>
+              <a href="/states/florida/">Florida <span class="live-badge">LIVE</span></a>
+              <a href="/states/louisiana/">Louisiana</a>
+              <a href="/states/south-carolina/">South Carolina</a>
+              <a href="/states/hawaii/">Hawaii</a>
+            </div>
+            <div class="dropdown-column">
+              <h4>Midwest</h4>
+              <a href="/states/illinois/">Illinois</a>
+              <a href="/states/indiana/">Indiana</a>
+              <a href="/states/iowa/">Iowa</a>
+              <a href="/states/kansas/">Kansas</a>
+              <a href="/states/kentucky/">Kentucky</a>
+              <a href="/states/north-dakota/">North Dakota</a>
+              <a href="/states/ohio/">Ohio</a>
+              <a href="/states/wisconsin/">Wisconsin</a>
+            </div>
+            <div class="dropdown-column">
+              <h4>Southwest</h4>
+              <a href="/states/new-mexico/">New Mexico</a>
+              <a href="/states/oklahoma/">Oklahoma</a>
+              <a href="/states/texas/">Texas</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="nav-item">
+          <a href="/blog/">Blog</a>
+        </div>
+        
+        <div class="nav-item">
+          <a href="/about/">About</a>
+        </div>
+        
+        <div class="nav-item">
+          <a href="/contact/">Contact</a>
+        </div>
+      </div>
+      
       <a href="/form/" class="nav-cta">Get Data</a>
     </div>
   </nav>
