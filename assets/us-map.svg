@@ -1,0 +1,211 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="900" height="600" fill="#f8f9fa"/>
+  
+  <!-- US Outline (simplified) -->
+  <path d="M 50 50 L 850 50 L 850 550 L 50 550 Z" fill="#e8e8e8" stroke="#ccc" stroke-width="2"/>
+  
+  <!-- 21 Active States -->
+  
+  <!-- Florida (LIVE - Gold with pulse animation) -->
+  <g class="state florida">
+    <path d="M 680 480 L 780 480 L 780 520 L 760 560 L 720 580 L 680 580 Z" fill="#c9a227" stroke="#1a3a5c" stroke-width="2"/>
+    <circle cx="730" cy="530" r="15" fill="#1a3a5c" opacity="0.3">
+      <animate attributeName="r" values="15;25;15" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0;0.3" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="720" y="535" fill="#1a3a5c" font-size="14" font-weight="bold">FL</text>
+    <text x="710" y="595" fill="#1a3a5c" font-size="11">LIVE NOW</text>
+  </g>
+  
+  <!-- Northeast / New England -->
+  <g class="state coming">
+    <path d="M 760 120 L 790 120 L 790 150 L 760 150 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- ME -->
+    <text x="765" y="140" fill="white" font-size="10">ME</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 730 150 L 760 150 L 760 180 L 730 180 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- VT -->
+    <text x="735" y="170" fill="white" font-size="10">VT</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 760 180 L 790 180 L 790 210 L 760 210 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- NH -->
+    <text x="765" y="200" fill="white" font-size="10">NH</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 730 210 L 760 210 L 760 240 L 730 240 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- MA -->
+    <text x="738" y="230" fill="white" font-size="9">MA</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 710 240 L 730 240 L 730 270 L 710 270 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- CT -->
+    <text x="713" y="260" fill="white" font-size="9">CT</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 710 270 L 740 270 L 740 300 L 710 300 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- RI -->
+    <text x="718" y="290" fill="white" font-size="8">RI</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 700 180 L 730 180 L 730 240 L 700 240 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- NY -->
+    <text x="705" y="215" fill="white" font-size="12">NY</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 670 240 L 710 240 L 710 300 L 670 300 Z" fill="#2d5a3d" stroke="white" stroke-width="2"/> <!-- PA -->
+    <text x="680" y="275" fill="white" font-size="14">PA</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 680 350 L 710 350 L 710 380 L 680 380 Z" fill="#4a7a5a" stroke="white" stroke-width="1"/> <!-- DE -->
+    <text x="685" y="370" fill="white" font-size="9">DE</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 690 300 L 720 300 L 720 350 L 690 350 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- NJ -->
+    <text x="698" y="330" fill="white" font-size="10">NJ</text>
+  </g>
+  
+  <!-- Midwest -->
+  <g class="state coming">
+    <path d="M 450 100 L 520 100 L 520 150 L 450 150 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- ND -->
+    <text x="480" y="130" fill="white" font-size="12">ND</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 500 180 L 550 180 L 550 240 L 500 240 Z" fill="#2d5a3d" stroke="white" stroke-width="2"/> <!-- WI -->
+    <text x="515" y="215" fill="white" font-size="14">WI</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 550 220 L 600 220 L 600 280 L 550 280 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- MI -->
+    <text x="568" y="255" fill="white" font-size="12">MI</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 520 280 L 560 280 L 560 330 L 520 330 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- IN -->
+    <text x="532" y="310" fill="white" font-size="12">IN</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 480 280 L 520 280 L 520 350 L 480 350 Z" fill="#2d5a3d" stroke="white" stroke-width="2"/> <!-- IL -->
+    <text x="490" y="320" fill="white" font-size="14">IL</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 560 280 L 620 280 L 620 340 L 560 340 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- OH -->
+    <text x="580" y="315" fill="white" font-size="14">OH</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 440 250 L 480 250 L 480 320 L 440 320 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- IA -->
+    <text x="452" y="290" fill="white" font-size="12">IA</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 380 350 L 440 350 L 440 410 L 380 410 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- MO -->
+    <text x="398" y="385" fill="white" font-size="12">MO</text>
+  </g>
+  
+  <!-- South -->
+  <g class="state coming">
+    <path d="M 560 340 L 620 340 L 620 390 L 560 390 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- WV -->
+    <text x="575" y="370" fill="white" font-size="11">WV</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 560 390 L 610 390 L 610 440 L 560 440 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- KY -->
+    <text x="575" y="420" fill="white" font-size="12">KY</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 610 390 L 670 390 L 670 450 L 610 450 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- VA -->
+    <text x="630" y="425" fill="white" font-size="12">VA</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 620 450 L 680 450 L 680 480 L 620 480 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- NC -->
+    <text x="640" y="470" fill="white" font-size="12">NC</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 600 480 L 650 480 L 650 520 L 600 520 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- SC -->
+    <text x="618" y="505" fill="white" font-size="11">SC</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 420 480 L 480 480 L 480 560 L 420 560 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- AR -->
+    <text x="442" y="525" fill="white" font-size="12">AR</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 480 480 L 540 480 L 540 530 L 480 530 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- MS -->
+    <text x="500" y="510" fill="white" font-size="11">MS</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 540 480 L 600 480 L 600 550 L 540 550 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- AL -->
+    <text x="560" y="520" fill="white" font-size="12">AL</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 520 550 L 600 550 L 600 600 L 520 600 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- GA -->
+    <text x="555" y="580" fill="white" font-size="14">GA</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 480 530 L 540 530 L 540 600 L 480 600 Z" fill="#3d6a4d" stroke="white" stroke-width="1"/> <!-- LA -->
+    <text x="505" y="575" fill="white" font-size="12">LA</text>
+  </g>
+  
+  <!-- Southwest -->
+  <g class="state coming">
+    <path d="M 320 380 L 380 380 L 380 440 L 320 440 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- OK -->
+    <text x="342" y="415" fill="white" font-size="12">OK</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 350 440 L 420 440 L 420 500 L 350 500 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- TX -->
+    <text x="378" y="475" fill="white" font-size="14">TX</text>
+  </g>
+  
+  <g class="state coming">
+    <path d="M 180 380 L 260 380 L 260 460 L 180 460 Z" fill="#2d5a3d" stroke="white" stroke-width="1"/> <!-- NM -->
+    <text x="212" y="425" fill="white" font-size="14">NM</text>
+  </g>
+  
+  <!-- Hawaii (floating Pacific) -->
+  <g class="state coming" transform="translate(100, 450)">
+    <ellipse cx="30" cy="40" rx="50" ry="25" fill="#2d5a3d" stroke="white" stroke-width="1"/>
+    <text x="25" y="45" fill="white" font-size="12">HI</text>
+  </g>
+  
+  <!-- Legend -->
+  <g transform="translate(50, 520)">
+    <rect x="0" y="0" width="20" height="20" fill="#c9a227"/>
+    <text x="30" y="15" fill="#1a3a5c" font-size="12">Live Now (Florida)</text>
+    
+    <rect x="200" y="0" width="20" height="20" fill="#2d5a3d"/>
+    <text x="230" y="15" fill="#1a3a5c" font-size="12">Coming 2024-2025</text>
+  </g>
+  
+  <!-- Title -->
+  <text x="450" y="30" text-anchor="middle" fill="#1a3a5c" font-size="24" font-weight="bold">LisPendensData Coverage</text>
+  <text x="450" y="55" text-anchor="middle" fill="#666" font-size="14">21 States • 2,000+ Counties • Weekly & Daily Updates</text>
+</svg>
+
+<style>
+  .state {
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .state:hover {
+    filter: brightness(1.2);
+  }
+  .state.florida:hover {
+    filter: brightness(1.1);
+  }
+</style>

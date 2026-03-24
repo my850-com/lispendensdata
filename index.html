@@ -597,48 +597,22 @@
       <h2>21 States Covered</h2>
       <p>Florida live now. All other states launching 2024-2025.</p>
       
-      <!-- Simplified US Map SVG -->
-      <svg class="us-map" viewBox="0 0 950 600" xmlns="http://www.w3.org/2000/svg">
-        <!-- Northeast -->
-        <path class="state active florida" d="M 650 500 L 750 500 L 750 580 L 650 550 Z" title="Florida"/>
-        <path class="state active" d="M 750 550 L 780 550 L 780 580 L 750 580 Z" title="Connecticut"/>
-        <path class="state active" d="M 780 540 L 810 540 L 810 570 L 780 570 Z" title="New York"/>
-        <path class="state active" d="M 810 540 L 840 540 L 840 570 L 810 570 Z" title="Vermont"/>
-        <path class="state active" d="M 840 530 L 870 530 L 870 560 L 840 560 Z" title="Maine"/>
-        <path class="state active" d="M 800 570 L 830 570 L 830 590 L 800 590 Z" title="New Jersey"/>
-        <path class="state active" d="M 750 580 L 780 580 L 780 600 L 750 600 Z" title="Delaware"/>
-        <path class="state active" d="M 680 480 L 750 480 L 750 500 L 680 500 Z" title="Ohio"/>
-        <path class="state active" d="M 620 460 L 680 460 L 680 500 L 620 500 Z" title="Indiana"/>
-        <path class="state active" d="M 620 420 L 680 420 L 680 460 L 620 460 Z" title="Wisconsin"/>
-        <path class="state active" d="M 580 380 L 650 380 L 650 420 L 580 420 Z" title="North Dakota"/>
-        <path class="state active" d="M 560 420 L 620 420 L 620 460 L 560 460 Z" title="Iowa"/>
-        <path class="state active" d="M 500 460 L 560 460 L 560 500 L 500 500 Z" title="Kansas"/>
-        <path class="state active" d="M 650 480 L 680 480 L 680 520 L 650 520 Z" title="Pennsylvania"/>
-        <path class="state active" d="M 520 550 L 600 550 L 600 580 L 520 580 Z" title="Oklahoma"/>
-        <path class="state active" d="M 600 550 L 650 550 L 650 580 L 600 580 Z" title="Louisiana"/>
-        <path class="state active" d="M 680 520 L 750 520 L 750 580 L 680 580 Z" title="South Carolina"/>
-        <path class="state active" d="M 650 380 L 700 380 L 700 420 L 650 420 Z" title="Kentucky"/>
-        
-        <!-- Southwest -->
-        <path class="state active" d="M 200 500 L 350 500 L 350 580 L 200 580 Z" title="New Mexico"/>
-        <path class="state active" d="M 350 480 L 500 480 L 500 550 L 350 550 Z" title="Texas"/>
-        
-        <!-- West Coast -->
-        <path class="state active" d="M 50 400 L 150 400 L 150 500 L 50 500 Z" title="Hawaii"/>
-        <path class="state active" d="M 150 480 L 200 480 L 200 550 L 150 550 Z" title="California"/>
-        
-        <!-- Label -->
-        <text x="700" y="530" fill="white" font-size="12" font-weight="bold">FL</text>
-      </svg>
+      <!-- 21-State Interactive Map -->
+      <div class="map-wrapper">
+        <object data="/assets/map-21-states.svg" type="image/svg+xml" class="us-map">
+          <!-- Fallback for browsers without SVG support -->
+          <img src="/assets/map-21-states.png" alt="Map of 21 states with Florida live now" class="us-map"/>
+        </object>
+      </div>
       
       <div class="legend">
         <div class="legend-item">
           <div class="legend-box live"></div>
-          <span>Live Now</span>
+          <span>Live Now (Florida)</span>
         </div>
         <div class="legend-item">
           <div class="legend-box coming"></div>
-          <span>Launching Soon</span>
+          <span>Launching 2024-2025</span>
         </div>
       </div>
       
