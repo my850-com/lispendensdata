@@ -20,6 +20,24 @@
     .logo { color: var(--white); font-size: 1.5rem; font-weight: 700; text-decoration: none; }
     .logo span { color: var(--gold); }
     .nav-cta { background: var(--gold); color: var(--navy); padding: 0.6rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; }
+    .nav-menu { display: flex; align-items: center; gap: 2rem; }
+    .nav-link { color: var(--white); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+    .nav-link:hover { color: var(--gold); }
+    .dropdown { position: relative; }
+    .dropdown-toggle { cursor: pointer; }
+    .dropdown-menu {
+      position: absolute; top: 100%; left: 0;
+      background: var(--white); min-width: 200px;
+      border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      padding: 1rem 0; opacity: 0; visibility: hidden;
+      transform: translateY(-10px); transition: all 0.3s; z-index: 1001;
+      max-height: 70vh; overflow-y: auto;
+    }
+    .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown-header { color: var(--navy); font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 0.5rem 1.5rem; border-bottom: 1px solid #eee; margin-bottom: 0.5rem; }
+    .dropdown-item { display: block; color: var(--text); text-decoration: none; padding: 0.5rem 1.5rem; font-size: 14px; transition: background 0.2s; }
+    .dropdown-item:hover { background: var(--light); color: var(--navy); }
+    .dropdown-item[href="#"] { color: #999; cursor: default; }
     .hero { background: linear-gradient(135deg, var(--navy) 0%, #2a5298 100%); color: var(--white); padding: 150px 20px 100px; text-align: center; }
     .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
     .hero p { font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.9; }
@@ -37,12 +55,31 @@
     @keyframes pulse { 0%, 100% { opacity: 0.6; r: 4; } 50% { opacity: 0.2; r: 12; } }
     .live-pulse { animation: pulse 2s ease-in-out infinite; }
     .pricing { padding: 80px 20px; background: var(--light); }
-    .pricing-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-    .pricing-card { background: var(--white); border-radius: 12px; padding: 2rem; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
-    .pricing-card.featured { border: 3px solid var(--gold); transform: scale(1.05); }
-    .price { font-size: 2.5rem; font-weight: 700; color: var(--navy); }
-    .btn { display: inline-block; padding: 0.8rem 2rem; background: var(--gold); color: var(--navy); text-decoration: none; border-radius: 6px; font-weight: 600; margin-top: 1rem; }
-    .btn:hover { background: #b8941f; }
+    .pricing-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .pricing-card { background: var(--white); border-radius: 12px; padding: 2.5rem 2rem; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); position: relative; }
+    .pricing-card.featured { border: 3px solid var(--gold); transform: scale(1.02); box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
+    .pricing-card.free { max-width: 400px; margin: 3rem auto 0; border: 2px dashed var(--green); background: linear-gradient(180deg, #fff 0%, #f8f9fa 100%); }
+    .pricing-card.free .btn { background: var(--green); color: white; }
+    .pricing-card.free .btn:hover { background: #2a5a3d; }
+    .popular-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--navy); padding: 6px 20px; font-size: 12px; font-weight: 700; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .price { font-size: 2.8rem; font-weight: 800; color: var(--navy); line-height: 1; }
+    .price-small { font-size: 1rem; color: #666; font-weight: 400; }
+    .pricing-card ul { list-style: none; margin: 1.5rem 0; text-align: left; }
+    .pricing-card li { padding: 8px 0; padding-left: 24px; position: relative; color: #555; font-size: 14px; border-bottom: 1px solid #f0f0f0; }
+    .pricing-card li:last-child { border-bottom: none; }
+    .pricing-card li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: bold; }
+    .pricing-card.featured li::before { color: var(--gold); }
+    .btn { display: inline-block; padding: 1rem 2.5rem; background: var(--gold); color: var(--navy); text-decoration: none; border-radius: 8px; font-weight: 700; margin-top: 1rem; transition: all 0.3s; }
+    .btn:hover { background: #b8941f; transform: translateY(-2px); }
+    .cta-section { padding: 100px 20px; background: linear-gradient(135deg, var(--navy) 0%, #2a5298 100%); color: white; text-align: center; }
+    .cta-section h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .cta-section p { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto 2rem; }
+    .cta-btn { display: inline-block; padding: 1.2rem 3rem; background: var(--gold); color: var(--navy); text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 1.1rem; transition: all 0.3s; }
+    .cta-btn:hover { background: #d4af37; transform: scale(1.05); }
+    .seo-content { padding: 60px 20px; background: var(--white); }
+    .seo-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; }
+    .seo-block h3 { color: var(--navy); font-size: 1.3rem; margin-bottom: 1rem; }
+    .seo-block p { color: #666; line-height: 1.8; }
     .footer { background: var(--navy); color: var(--white); padding: 40px 20px; text-align: center; }
   </style>
 </head>
@@ -50,7 +87,40 @@
   <nav class="navbar">
     <div class="nav-container">
       <a href="/" class="logo">LisPendens<span>Data</span></a>
-      <a href="#pricing" class="nav-cta">Get Data</a>
+      <div class="nav-menu">
+        <a href="/" class="nav-link">Home</a>
+        <div class="dropdown">
+          <a href="#" class="nav-link dropdown-toggle">States ▼</a>
+          <div class="dropdown-menu">
+            <div class="dropdown-header">Northeast</div>
+            <a href="#" class="dropdown-item">Connecticut</a>
+            <a href="#" class="dropdown-item">Delaware</a>
+            <a href="#" class="dropdown-item">Maine</a>
+            <a href="#" class="dropdown-item">New Jersey</a>
+            <a href="#" class="dropdown-item">New York</a>
+            <a href="#" class="dropdown-item">Pennsylvania</a>
+            <a href="#" class="dropdown-item">Vermont</a>
+            <div class="dropdown-header">Midwest</div>
+            <a href="#" class="dropdown-item">Illinois</a>
+            <a href="#" class="dropdown-item">Indiana</a>
+            <a href="#" class="dropdown-item">Iowa</a>
+            <a href="#" class="dropdown-item">North Dakota</a>
+            <a href="#" class="dropdown-item">Ohio</a>
+            <a href="#" class="dropdown-item">Wisconsin</a>
+            <div class="dropdown-header">South</div>
+            <a href="#" class="dropdown-item">Florida</a>
+            <a href="#" class="dropdown-item">Kentucky</a>
+            <a href="#" class="dropdown-item">Louisiana</a>
+            <a href="#" class="dropdown-item">South Carolina</a>
+            <div class="dropdown-header">Southwest</div>
+            <a href="#" class="dropdown-item">Hawaii</a>
+            <a href="#" class="dropdown-item">New Mexico</a>
+            <a href="#" class="dropdown-item">Oklahoma</a>
+          </div>
+        </div>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <a href="form/?v=2" class="nav-cta">Request Count</a>
     </div>
   </nav>
 
@@ -164,36 +234,96 @@
   </section>
 
   <section class="pricing" id="pricing">
+    <h2 style="text-align:center; color:var(--navy); font-size:2.2rem; margin-bottom:3rem;">Choose Your Plan</h2>
+    
     <div class="pricing-grid">
       <div class="pricing-card">
         <h3>Bronze</h3>
         <div class="price">$49</div>
-        <p>+ $29/county</p>
+        <p class="price-small">+ $29/county</p>
         <ul>
-          <li>Weekly email updates</li>
+          <li>Weekly email updates (Monday delivery)</li>
+          <li>1 primary county included</li>
+          <li>Add counties (+$29 each)</li>
           <li>CSV, Excel & PDF downloads</li>
+          <li>Case details & property info</li>
+          <li>Onboarding call included</li>
+          <li>Best for: Beginners, Lenders</li>
         </ul>
-        <a href="/form/" class="btn">Subscribe</a>
+        <a href="form/" class="btn">Subscribe Bronze</a>
       </div>
+      
       <div class="pricing-card featured">
+        <span class="popular-badge">Most Popular</span>
         <h3>Silver</h3>
         <div class="price">$139</div>
-        <p>+ $49/county</p>
+        <p class="price-small">+ $49/county</p>
         <ul>
           <li>Daily email updates (Mon-Fri)</li>
+          <li>1 primary county included</li>
+          <li>Add counties (+$49 each)</li>
           <li>CSV, Excel & PDF downloads</li>
+          <li>Owner contact data included</li>
+          <li>Priority email support</li>
+          <li>Best for: Active Agents, Investors</li>
         </ul>
-        <a href="/form/" class="btn">Subscribe</a>
+        <a href="form/" class="btn">Subscribe Silver</a>
       </div>
+      
       <div class="pricing-card">
         <h3>Gold</h3>
         <div class="price">$229</div>
-        <p>+ $49/county</p>
+        <p class="price-small">+ $49/county</p>
         <ul>
-          <li>Daily + letter files (Mon-Fri)</li>
-          <li>3 custom print-ready templates</li>
+          <li>Daily email + letter files (Mon-Fri)</li>
+          <li>1 primary county included</li>
+          <li>Add counties (+$49 each)</li>
+          <li>5 print-ready letter templates</li>
+          <li>Skip tracing data included</li>
+          <li>Dedicated account manager</li>
+          <li>Best for: Full-time Teams, Marketing</li>
         </ul>
-        <a href="/form/" class="btn">Subscribe</a>
+        <a href="form/" class="btn">Subscribe Gold</a>
+      </div>
+    </div>
+    
+    <!-- Free Homeowner Option - Centered Below -->
+    <div class="pricing-card free">
+      <h3 style="color:var(--green);">🏠 Homeowner Lookup</h3>
+      <div class="price" style="color:var(--green); font-size:2rem;">FREE</div>
+      <p class="price-small">Florida homeowners only</p>
+      <ul style="text-align:center;">
+        <li style="padding-left:0;">Search your property address</li>
+        <li style="padding-left:0;">See if you have a Lis Pendens filing</li>
+        <li style="padding-left:0;">Free copy delivered in 24-48 hours</li>
+        <li style="padding-left:0;">Educational resources included</li>
+        <li style="padding-left:0;">No subscription required</li>
+      </ul>
+      <a href="form/" class="btn">Free Lookup</a>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <h2>Ready to Find Pre-Foreclosure Deals?</h2>
+    <p>Join hundreds of investors and agents who rely on our timely, accurate lis pendens filings. No long-term contracts. Cancel anytime.</p>
+    <a href="form/" class="cta-btn">Get Started Today →</a>
+  </section>
+
+  <!-- SEO / Trust Building Section -->
+  <section class="seo-content">
+    <div class="seo-grid">
+      <div class="seo-block">
+        <h3>📊 What Are Lis Pendens?</h3>
+        <p>A Lis Pendens is a legal notice filed when a property is involved in a lawsuit. For investors, this is a goldmine of pre-foreclosure opportunities. Be the first to know when properties hit the market before foreclosure auctions.</p>
+      </div>
+      <div class="seo-block">
+        <h3>🎯 Why Choose LisPendensData?</h3>
+        <p>We deliver fresh, accurate data directly from county courthouses. No scraping, no outdated listings — just real-time filings delivered to your inbox daily or weekly. Fresh data means first-mover advantage.</p>
+      </div>
+      <div class="seo-block">
+        <h3>📍 Coverage You Can Count On</h3>
+        <p>Currently live in Florida with 21 states launching 2024-2025. We cover over 2,000 counties nationwide, processing thousands of filings weekly. From Miami to Maine, we've got you covered.</p>
       </div>
     </div>
   </section>
