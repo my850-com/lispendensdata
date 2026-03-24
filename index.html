@@ -81,16 +81,47 @@
     .seo-block h3 { color: var(--navy); font-size: 1.3rem; margin-bottom: 1rem; }
     .seo-block p { color: #666; line-height: 1.8; }
     .footer { background: var(--navy); color: var(--white); padding: 40px 20px; text-align: center; }
+    
+    /* Hamburger Menu */
+    .hamburger { display: none; flex-direction: column; justify-content: space-around; width: 30px; height: 24px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1002; }
+    .hamburger span { width: 100%; height: 3px; background: var(--gold); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+    
+    /* MOBILE RESPONSIVE */
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-menu { position: fixed; top: 60px; left: 0; right: 0; bottom: 0; background: var(--navy); flex-direction: column; padding: 2rem; transform: translateX(100%); transition: transform 0.3s; gap: 1.5rem; }
+      .nav-menu.active { transform: translateX(0); }
+      .nav-link { font-size: 1.2rem; }
+      .dropdown-menu { position: static; opacity: 1; visibility: visible; transform: none; background: rgba(255,255,255,0.1); margin-top: 0.5rem; max-height: 0; overflow: hidden; transition: max-height 0.3s; }
+      .dropdown.active .dropdown-menu { max-height: 400px; }
+      .dropdown-item { color: var(--white); }
+      .dropdown-header { color: var(--gold); border-color: rgba(255,255,255,0.2); }
+      .hero h1 { font-size: 1.8rem; }
+      .hero p { font-size: 1rem; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .pricing-card.featured { transform: none; }
+      .cta-section h2 { font-size: 1.8rem; }
+      .seo-content { padding: 40px 15px; }
+      .seo-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
   </style>
 </head>
 <body>
   <nav class="navbar">
     <div class="nav-container">
       <a href="/" class="logo">LisPendens<span>Data</span></a>
-      <div class="nav-menu">
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-menu" id="navMenu">
         <a href="/" class="nav-link">Home</a>
         <div class="dropdown">
-          <a href="#" class="nav-link dropdown-toggle">States ▼</a>
+          <a href="#" class="nav-link dropdown-toggle" id="statesToggle">States ▼</a>
           <div class="dropdown-menu">
             <div class="dropdown-header">Northeast</div>
             <a href="#" class="dropdown-item">Connecticut</a>
@@ -118,9 +149,10 @@
             <a href="#" class="dropdown-item">Oklahoma</a>
           </div>
         </div>
-        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#footer" class="nav-link">Contact</a>
+        <a href="form/" class="nav-cta-mobile">Request Count</a>
       </div>
-      <a href="form/?v=2" class="nav-cta">Request Count</a>
+      <a href="form/" class="nav-cta desktop-only">Request Count</a>
     </div>
   </nav>
 
@@ -328,8 +360,40 @@
     </div>
   </section>
 
-  <footer class="footer">
+  <footer class="footer" id="footer">
     <p>© 2024 LisPendensData.com — 21 States, 2,000+ Counties</p>
+    <p style="margin-top: 10px; opacity: 0.8;"><a href="mailto:info@lispendensdata.com" style="color: var(--gold);">info@lispendensdata.com</a></p>
   </footer>
+
+  <script>
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburgerBtn');
+    const navMenu = document.getElementById('navMenu');
+    const statesToggle = document.getElementById('statesToggle');
+    const dropdown = document.querySelector('.dropdown');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    // Mobile states dropdown toggle
+    if (statesToggle) {
+      statesToggle.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          dropdown.classList.toggle('active');
+        }
+      });
+    }
+
+    // Close menu when clicking a link
+    document.querySelectorAll('.nav-link:not(.dropdown-toggle)').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+  </script>
 </body>
 </html>
