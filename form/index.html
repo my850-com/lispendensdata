@@ -91,7 +91,7 @@
           <input type="text" name="county" placeholder="e.g., Bay County" required>
         </div>
         <div class="form-group">
-          <label>Phone Number <span class="required">*</span></label>
+          <label>Text Number <span class="required">*</span></label>
           <input type="tel" name="phone" placeholder="(850) 555-1234" required>
         </div>
         <div class="form-group">
@@ -102,10 +102,7 @@
           <label>Job Title / Role</label>
           <input type="text" name="job_title" placeholder="e.g., Real Estate Attorney">
         </div>
-        <div class="form-group">
-          <label>Additional Notes</label>
-          <textarea name="notes" placeholder="Specific data needs..."></textarea>
-        </div>
+
         <button type="submit" class="submit-btn">Request Data Count</button>
       </form>
     </div>
@@ -113,7 +110,8 @@
     <div class="success-message" id="successMessage">
       <div class="success-icon"></div>
       <h3>Thank You!</h3>
-      <p>Your request has been submitted. We'll contact you within 24 hours.</p>
+      <p>Your request has been submitted. We will text you the number of Lis Pendens filings in your county(s).</p>
+      <p style="margin-top: 10px; color: #666; font-size: 14px;">Redirecting you back home...</p>
     </div>
   </div>
 
@@ -137,6 +135,10 @@
     function showSuccess() {
       document.getElementById('formContent').style.display = 'none';
       document.getElementById('successMessage').classList.add('show');
+      // Redirect back to homepage after 3 seconds
+      setTimeout(function() {
+        window.location.href = '../';
+      }, 3000);
     }
   </script>
 </body>
