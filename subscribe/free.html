@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Property Lookup | LisPendensData</title>
+  <style>
+    :root {
+      --navy: #1a3a5c;
+      --green: #2d5a3d;
+      --gold: #c9a227;
+      --white: #ffffff;
+      --light: #f8f9fa;
+      --text: #2c3e50;
+      --blue: #1976d2;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--light);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container { max-width: 500px; margin: 0 auto; }
+    
+    /* Header */
+    .header { text-align: center; padding: 30px 20px 20px; }
+    .logo { font-size: 1.6rem; font-weight: 700; color: var(--navy); text-decoration: none; display: block; margin-bottom: 15px; }
+    .logo span { color: var(--gold); }
+    
+    /* Hero */
+    h1 { font-size: 2.2rem; color: var(--navy); margin-bottom: 10px; line-height: 1.2; }
+    .tagline { color: var(--blue); font-size: 1.2rem; font-weight: 500; margin-bottom: 20px; }
+    .intro { color: #444; line-height: 1.6; margin-bottom: 25px; font-size: 0.95rem; }
+    
+    /* Quote */
+    .quote { 
+      border-left: 3px solid var(--navy); 
+      padding: 15px 20px; 
+      margin: 25px 0; 
+      background: #f8f9fa;
+      font-style: italic;
+      color: #333;
+    }
+    .quote-author { 
+      display: block; 
+      margin-top: 8px; 
+      font-style: normal; 
+      font-weight: 600; 
+      color: var(--navy); 
+    }
+    
+    /* Features */
+    .features { margin: 25px 0; }
+    .features li { 
+      padding: 10px 0; 
+      padding-left: 20px; 
+      position: relative; 
+      color: #333;
+      font-size: 0.95rem;
+      list-style: none;
+    }
+    .features li::before { 
+      content: '•'; 
+      position: absolute; 
+      left: 0; 
+      color: var(--navy); 
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    
+    /* CTA Button */
+    .cta-btn { 
+      display: block; 
+      width: 100%; 
+      padding: 18px; 
+      background: var(--blue); 
+      color: var(--white); 
+      border: none; 
+      border-radius: 8px; 
+      font-size: 1.1rem; 
+      font-weight: 600; 
+      cursor: pointer; 
+      margin: 30px 0;
+      text-decoration: none;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .cta-btn:hover { background: #1565c0; }
+    
+    /* Form */
+    .form-header { 
+      background: var(--white); 
+      padding: 25px; 
+      border-radius: 12px; 
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .form-header h2 { 
+      color: var(--navy); 
+      font-size: 1.4rem; 
+      margin-bottom: 10px; 
+    }
+    .form-header p { 
+      color: #555; 
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .form-header .phone { 
+      color: var(--blue); 
+      font-weight: 600; 
+      text-decoration: none;
+    }
+    
+    .form-card { 
+      background: var(--white); 
+      border-radius: 16px; 
+      padding: 25px; 
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
+    }
+    
+    .step-title { 
+      font-size: 1.8rem; 
+      color: #333; 
+      margin-bottom: 25px; 
+      text-align: center;
+    }
+    .step-title span { font-weight: 400; }
+    
+    .form-group { margin-bottom: 20px; }
+    .form-group label { 
+      display: block; 
+      margin-bottom: 8px; 
+      color: #333; 
+      font-size: 0.95rem;
+    }
+    .form-group label .required { color: #d32f2f; }
+    .form-group input, .form-group select {
+      width: 100%; 
+      padding: 14px 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      background: var(--white);
+    }
+    .form-group input:focus, .form-group select:focus {
+      outline: none; 
+      border-color: var(--blue);
+    }
+    .form-group input::placeholder { color: #999; }
+    
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    
+    /* Address Search Field */
+    .address-search {
+      position: relative;
+    }
+    .address-search::before {
+      content: '🔍';
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      color: #999;
+    }
+    .address-search input {
+      padding-left: 45px;
+    }
+    
+    /* Nav Bar */
+    .nav-bar { 
+      display: flex; 
+      align-items: center; 
+      gap: 15px; 
+      margin-top: 25px;
+      padding: 14px 20px;
+      background: var(--blue);
+      border-radius: 8px;
+      color: var(--white);
+    }
+    .nav-btn { 
+      background: none; 
+      border: none; 
+      color: var(--white); 
+      font-size: 1.3rem; 
+      cursor: pointer; 
+      padding: 5px 10px;
+    }
+    .nav-btn.prev { margin-right: auto; }
+    .nav-btn.next { margin-left: auto; }
+    .step-counter { 
+      font-size: 0.9rem; 
+      flex: 1;
+      text-align: center;
+    }
+    .submit-btn { 
+      background: var(--white); 
+      color: var(--blue); 
+      border: none; 
+      padding: 8px 20px; 
+      border-radius: 6px; 
+      font-weight: 600; 
+      cursor: pointer;
+      margin-left: auto;
+    }
+    
+    /* Steps */
+    .form-step { display: none; }
+    .form-step.active { display: block; }
+    
+    /* Submit Page */
+    .submit-page { padding: 20px 15px; }
+    .checkbox-area { 
+      background: var(--white); 
+      border: 1px solid #ddd; 
+      border-radius: 8px; 
+      padding: 15px; 
+      margin: 15px 0;
+    }
+    .checkbox-area label { 
+      display: flex; 
+      align-items: flex-start; 
+      gap: 12px; 
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: #444;
+      line-height: 1.5;
+    }
+    .checkbox-area input[type="checkbox"] { 
+      width: 20px; 
+      height: 20px; 
+      margin: 0; 
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .checkbox-area a { color: var(--blue); }
+    
+    /* Success */
+    .success-message { display: none; text-align: center; padding: 40px 20px; background: var(--white); border-radius: 16px; }
+    .success-message.show { display: block; }
+    .success-icon { 
+      width: 80px; 
+      height: 80px; 
+      background: var(--green); 
+      border-radius: 50%; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      margin: 0 auto 20px; 
+      color: white; 
+      font-size: 40px; 
+    }
+    .success-message h2 { 
+      color: var(--navy); 
+      margin-bottom: 15px; 
+    }
+    .success-message p { 
+      color: #666; 
+      margin-bottom: 10px; 
+    }
+    .back-home { 
+      display: inline-block; 
+      margin-top: 25px; 
+      padding: 14px 30px; 
+      background: var(--blue); 
+      color: white; 
+      text-decoration: none; 
+      border-radius: 8px; 
+      font-weight: 600;
+    }
+    
+    @media (max-width: 480px) {
+      h1 { font-size: 1.9rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Hero Section -->
+    <div class="hero" id="heroSection">
+      <div class="header">
+        <a href="../" class="logo">LisPendens<span>Data</span></a>
+      </div>
+      
+      <h1>Find Out What's Been Filed on Your Property</h1>
+      <p class="tagline">Free, Fast, and Confidential</p>
+      
+      <p class="intro">
+        If a Lis Pendens has been filed on your property, you have the right to know. Request your free report today and receive a copy of your Lis Pendens within 24 hours — plus valuable information explaining the process in Florida and practical next steps for homeowners in foreclosure.
+      </p>
+      
+      <div class="quote">
+        "An investment in knowledge pays the best interest."
+        <span class="quote-author">— Ben Franklin</span>
+      </div>
+      
+      <ul class="features">
+        <li>Free 24-hour document delivery</li>
+        <li>Includes educational resources and guidance</li>
+        <li>Protect your property interests</li>
+      </ul>
+      
+      <button class="cta-btn" onclick="showForm()">Click Here To Request Document</button>
+    </div>
+    
+    <!-- Form Card -->
+    <div class="form-card" id="formCard" style="display: none;">
+      
+      <!-- Form Header -->
+      <div class="form-header">
+        <h2>Owner Lis Pendens Request</h2>
+        <p>We will email you a copy of your Lis Pendens FREE</p>
+        <p style="margin-top: 10px;">Let's get started. Tell us about your property below. Once we collect your answers we will send your Lis Pendens Copy via email. If you would prefer to receive information over the phone please call <a href="tel:850-998-8500" class="phone">(850) 998-8500</a>.</p>
+      </div>
+      
+      <form id="freeForm" action="https://script.google.com/macros/s/AKfycbwOT6cqQZKsYJXRVrO7F9pZWgJBVEQCocNvvSfJzjz6kszmeIZVwysHYM4mM12JwPov/exec" method="POST">
+        <input type="hidden" name="plan" value="Free Owner Request">
+        
+        <!-- Step 1: Property Info -->
+        <div class="form-step active" data-step="1">
+          <h2 class="step-title">Step <span>1 -</span> Property Info</h2>
+          
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="fullName" placeholder="Full Name">
+          </div>
+          
+          <div class="form-group">
+            <label>Email <span class="required">*</span></label>
+            <input type="email" name="email" placeholder="Email" required>
+          </div>
+          
+          <div class="form-group address-search">
+            <label>Address</label>
+            <input type="text" name="searchAddress" placeholder="Search address">
+          </div>
+          
+          <div class="form-group">
+            <label>Property Address <span class="required">*</span></label>
+            <input type="text" name="propertyAddress" placeholder="Property Address" required>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label>Property City <span class="required">*</span></label>
+              <input type="text" name="city" placeholder="City" required>
+            </div>
+            <div class="form-group">
+              <label>Property State <span class="required">*</span></label>
+              <input type="text" name="state" placeholder="State" value="Florida" required>
+            </div>
+          </div>
+          
+          <div class="form-group" style="max-width: 120px;">
+            <label>Property ZIP Code <span class="required">*</span></label>
+            <input type="text" name="zip" placeholder="Code" required>
+          </div>
+          
+          <div class="nav-bar">
+            <span class="step-counter">1 of 2</span>
+            <button type="button" class="nav-btn next" onclick="nextStep(2)">→</button>
+          </div>
+        </div>
+        
+        <!-- Step 2: Submit -->
+        <div class="form-step" data-step="2">
+          <div class="submit-page">
+            
+            <div class="checkbox-area">
+              <label>
+                <input type="checkbox" id="recaptcha" required>
+                <span>I'm not a robot</span>
+              </label>
+            </div>
+            
+            <div class="checkbox-area">
+              <label>
+                <input type="checkbox" name="certify" required>
+                <span>I hereby certify I am the owner of this property. I hold LisPendensData.com harmless from any claim associated with this information. This information does not constitute legal advice. If you have a Lis Pendens filed against your property we recommend seeking legal counsel. I agree to <a href="#">terms & conditions</a> provided by the company. By providing my email or phone number, I agree to receive communication from LisPendensData.com.</span>
+              </label>
+            </div>
+            
+            <div class="nav-bar" style="margin-top: 30px;">
+              <button type="button" class="nav-btn prev" onclick="prevStep(1)">←</button>
+              <span class="step-counter">2 of 2</span>
+              <button type="submit" class="submit-btn">SUBMIT</button>
+            </div>
+            
+          </div>
+        </div>
+        
+      </form>
+      
+      <!-- Success Message -->
+      <div class="success-message" id="successMessage">
+        <div class="success-icon">✓</div>
+        <h2>Request Sent!</h2>
+        <p>Thank you! We'll email your Lis Pendens copy within 24 hours.</p>
+        <p style="color: #666;">Check your inbox (and spam folder) for your document.</p>
+        <a href="../" class="back-home">Back to Home</a>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  <script>
+    let currentStep = 1;
+    
+    function showForm() {
+      document.getElementById('heroSection').style.display = 'none';
+      document.getElementById('formCard').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+    
+    function validateStep(step) {
+      const stepEl = document.querySelector(`.form-step[data-step="${step}"]`);
+      const requiredFields = stepEl.querySelectorAll('[required]');
+      let valid = true;
+      
+      requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+          field.style.borderColor = '#d32f2f';
+          valid = false;
+        } else {
+          field.style.borderColor = '';
+        }
+      });
+      
+      return valid;
+    }
+    
+    function nextStep(step) {
+      if (!validateStep(currentStep)) return;
+      
+      document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+      document.querySelector(`.form-step[data-step="${step}"]`).classList.add('active');
+      currentStep = step;
+    }
+    
+    function prevStep(step) {
+      document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+      document.querySelector(`.form-step[data-step="${step}"]`).classList.add('active');
+      currentStep = step;
+    }
+    
+    document.getElementById('freeForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      
+      fetch(form.action, {
+        method: 'POST',
+        body: new URLSearchParams(data),
+        mode: 'no-cors'
+      }).then(() => {
+        document.getElementById('freeForm').style.display = 'none';
+        document.querySelector('.form-header').style.display = 'none';
+        document.getElementById('successMessage').classList.add('show');
+      }).catch(() => {
+        document.getElementById('freeForm').style.display = 'none';
+        document.querySelector('.form-header').style.display = 'none';
+        document.getElementById('successMessage').classList.add('show');
+      });
+    });
+  </script>
+</body>
+</html>
