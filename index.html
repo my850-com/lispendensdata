@@ -63,6 +63,19 @@
     .live-text { fill: #1a3a5c; font-size: 14px; font-weight: 700; }
     @keyframes pulse { 0%, 100% { opacity: 0.6; r: 4; } 50% { opacity: 0.2; r: 12; } }
     .live-pulse { animation: pulse 2s ease-in-out infinite; }
+    
+    /* Contact Modal */
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 2000; align-items: center; justify-content: center; }
+    .modal.active { display: flex; }
+    .modal-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); }
+    .modal-content { position: relative; background: var(--white); border-radius: 12px; padding: 40px; max-width: 500px; width: 90%; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3); animation: modalSlideIn 0.3s ease-out; }
+    @keyframes modalSlideIn { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+    .modal-close { position: absolute; top: 15px; right: 20px; font-size: 2rem; color: #666; background: none; border: none; cursor: pointer; transition: color 0.2s; }
+    .modal-close:hover { color: var(--navy); }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; margin-bottom: 5px; color: var(--navy); font-weight: 600; font-size: 0.9rem; }
+    .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; font-family: inherit; font-size: 1rem; transition: border-color 0.2s; }
+    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--gold); }
     .pricing { padding: 80px 20px; background: var(--light); }
     .pricing-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
     .pricing-card { background: var(--white); border-radius: 12px; padding: 2.5rem 2rem; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); position: relative; }
@@ -182,7 +195,7 @@
             <a href="states/oklahoma.html" class="dropdown-item">Oklahoma</a>
           </div>
         </div>
-        <a href="#footer" class="nav-link">Contact</a>
+        <a href="#" class="nav-link" id="contactLink">Contact</a>
         <a href="form/" class="nav-cta-mobile">Request Count</a>
       </div>
       <a href="form/" class="nav-cta desktop-only">Request Count</a>
@@ -428,6 +441,48 @@
     </div>
   </section>
 
+  <!-- Contact Modal -->
+  <div class="modal" id="contactModal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <h2 style="color: var(--navy); margin-bottom: 10px;">Contact Us</h2>
+      <p style="color: #666; margin-bottom: 25px;">We'd love to hear from you. Send us a message or give us a call.</p>
+      
+      <div class="phone-block" style="background: var(--light); padding: 20px; border-radius: 8px; margin-bottom: 25px; text-align: center;">
+        <div style="font-size: 1.5rem; font-weight: 700; color: var(--navy); margin-bottom: 5px;">📞 (850) 998-8500</div>
+        <div style="color: #666; font-size: 0.9rem;">Monday - Friday, 9 AM - 5 PM CT</div>
+      </div>
+      
+      <form id="contactForm" action="https://formsubmit.co/data@my850.com" method="POST">
+        <input type="hidden" name="_subject" value="New Contact Form Submission - LisPendensData">
+        <input type="hidden" name="_next" value="https://my850-com.github.io/lispendensdata/thank-you.html">
+        
+        <div class="form-group">
+          <label for="name">Name *</label>
+          <input type="text" id="name" name="name" required placeholder="Your name">
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required placeholder="your@email.com">
+        </div>
+        
+        <div class="form-group">
+          <label for="phone">Phone (optional)</label>
+          <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Message *</label>
+          <textarea id="message" name="message" rows="4" required placeholder="How can we help you?"></textarea>
+        </div>
+        
+        <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">Send Message</button>
+      </form>
+    </div>
+  </div>
+
   <footer class="footer" id="footer">
     <p>© 2024 LisPendensData.com — 21 States, 2,000+ Counties</p>
     <p style="margin-top: 10px; opacity: 0.8;"><a href="mailto:data@my850.com" style="color: var(--gold);">data@my850.com</a></p>
@@ -477,6 +532,38 @@
           btn.classList.add('active');
         }
       });
+    });
+
+    // Contact Modal
+    const contactLink = document.getElementById('contactLink');
+    const contactModal = document.getElementById('contactModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalOverlay = document.querySelector('.modal-overlay');
+    const contactForm = document.getElementById('contactForm');
+
+    function openModal(e) {
+      if (e) e.preventDefault();
+      contactModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      // Close mobile nav if open
+      hamburger.classList.remove('active');
+      navMenu.classList.remove('active');
+    }
+
+    function closeModal() {
+      contactModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    contactLink.addEventListener('click', openModal);
+    modalClose.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', closeModal);
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && contactModal.classList.contains('active')) {
+        closeModal();
+      }
     });
   </script>
 </body>
