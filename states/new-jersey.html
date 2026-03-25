@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Jersey Lis Pendens Data | Newark, Jersey City, Paterson Foreclosures</title>
+  <meta name="description" content="Fresh Lis Pendens filings from New Jersey counties. Daily and weekly pre-foreclosure data for Newark, Jersey City, Paterson. Real estate investor insights. Starting at $49.">
+  <meta name="keywords" content="New Jersey lis pendens, New Jersey foreclosure data, Newark, Jersey City, Paterson, New Jersey real estate investing">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%231a3a5c' width='32' height='32' rx='6'/%3E%3Ctext x='50%25' y='55%25' font-size='14' text-anchor='middle' fill='%23c9a227' font-weight='bold' dominant-baseline='middle'%3EL%3C/text%3E%3C/svg%3E">
+  <style>
+    :root { --navy: #1a3a5c; --gold: #c9a227; --white: #ffffff; --light: #f8f9fa; --text: #2c3e50; --blue: #1976d2; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); line-height: 1.6; }
+    .navbar { background: var(--navy); padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; }
+    .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { color: var(--white); font-size: 1.5rem; font-weight: 700; text-decoration: none; }
+    .logo span { color: var(--gold); }
+    .hamburger { display: none; flex-direction: column; justify-content: space-around; width: 30px; height: 24px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1002; margin-left: auto; }
+    .hamburger span { width: 100%; height: 3px; background: var(--gold); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+    .nav-menu { display: flex; }
+    .nav-link { color: var(--white); text-decoration: none; margin-left: 20px; font-weight: 500; }
+    @media (max-width: 768px) { .hamburger { display: flex; } .nav-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; bottom: 0; background: var(--navy); padding: 2rem; flex-direction: column; gap: 1.5rem; } .nav-menu.active { display: flex; } .nav-link { margin-left: 0; } }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #2a5298 100%); color: var(--white); padding: 130px 20px 60px; }
+    .hero-content { max-width: 900px; margin: 0 auto; }
+    .breadcrumb { color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 15px; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .hero h1 { font-size: 2.2rem; margin-bottom: 15px; }
+    .hero p { font-size: 1rem; opacity: 0.9; line-height: 1.6; }
+    .hero-cta { display: inline-block; padding: 14px 35px; background: var(--gold); color: var(--navy); border-radius: 8px; text-decoration: none; font-weight: 700; margin-top: 15px; }
+    .content { max-width: 900px; margin: 0 auto; padding: 50px 20px; }
+    .county-intro { background: var(--white); padding: 30px; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 4px solid var(--gold); }
+    .county-intro h2 { color: var(--navy); font-size: 1.4rem; margin-bottom: 15px; }
+    .county-intro p { color: #555; line-height: 1.7; margin-bottom: 12px; }
+    .cities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 20px 0; }
+    .city-item { background: var(--white); padding: 15px; border-radius: 6px; text-align: center; border: 1px solid #ddd; }
+    .cta-box { background: linear-gradient(135deg, var(--navy) 0%, #2a5298 100%); color: white; padding: 40px; border-radius: 12px; text-align: center; margin: 40px 0; }
+    .cta-box h3 { font-size: 1.5rem; margin-bottom: 15px; }
+    .cta-btn { display: inline-block; padding: 14px 35px; background: var(--gold); color: var(--navy); border-radius: 8px; text-decoration: none; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../" class="logo">LisPendens<span>Data</span></a>
+      <button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
+      <div class="nav-menu" id="navMenu">
+        <a href="../" class="nav-link">Home</a>
+        <a href="../#pricing" class="nav-link">Pricing</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="breadcrumb"><a href="../">Home</a> / New Jersey</div>
+      <h1>New Jersey Lis Pendens Data</h1>
+      <p>Fresh foreclosure filings from Newark, Jersey City, Paterson. Daily and weekly pre-foreclosure data for real estate investors across all 21 New Jersey counties.</p>
+      <a href="../#pricing" class="hero-cta">Get New Jersey Data →</a>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="county-intro">
+      <h2>Why New Jersey Pre-Foreclosures?</h2>
+      <p>New Jersey offers unique real estate investment opportunities through its diverse housing markets. Major metro areas like Newark, Jersey City, Paterson consistently produce foreclosure filings that represent significant discount opportunities for prepared investors.</p>
+      <p>Our daily Lis Pendens data tracks every filing from New Jersey county courthouses, delivering fresh pre-foreclosure leads within 24-48 hours of recording. Whether you're targeting urban revitalization or suburban growth markets, New Jersey delivers.</p>
+    </div>
+    
+    <div class="county-intro">
+      <h2>Major New Jersey Markets</h2>
+      <div class="cities-grid">
+        <div class="city-item"><strong>Newark</strong></div>
+        <div class="city-item"><strong>Jersey City</strong></div>
+        <div class="city-item"><strong>Paterson</strong></div>
+        <div class="city-item"><strong>Elizabeth</strong></div>
+        <div class="city-item"><strong>Trenton</strong></div>
+      </div>
+    </div>
+    
+    <div class="cta-box">
+      <h3>Get New Jersey Lis Pendens Data</h3>
+      <p>Start at $49/month for weekly updates. Daily delivery available. No long-term contracts.</p>
+      <a href="../#pricing" class="cta-btn">View Pricing</a>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById('hamburgerBtn').addEventListener('click', function() {
+      this.classList.toggle('active');
+      document.getElementById('navMenu').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
