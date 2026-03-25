@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Walton County Lis Pendens Data | 30A & DeFuniak Springs Foreclosures</title>
+  <meta name="description" content="Fresh Lis Pendens filings from Walton County, Florida. Daily pre-foreclosure data for DeFuniak Springs, Freeport, and 30A. Real estate investor insights for Florida's fastest-growing county.">
+  <meta name="keywords" content="Walton County lis pendens, 30A foreclosure data, DeFuniak Springs foreclosures, Freeport FL real estate, Walton County Florida, Santa Rosa Beach liens, Miramar Beach pre-foreclosure, Florida Panhandle investing">
+  <meta name="author" content="LisPendensData">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%231a3a5c' width='32' height='32' rx='6'/%3E%3Ctext x='50%25' y='55%25' font-size='14' text-anchor='middle' fill='%23c9a227' font-weight='bold' dominant-baseline='middle'%3EL%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --navy: #1a3a5c;
+      --green: #2d5a3d;
+      --gold: #c9a227;
+      --white: #ffffff;
+      --light: #f8f9fa;
+      --text: #2c3e50;
+      --blue: #1976d2;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--text); line-height: 1.6; }
+    .navbar { background: var(--navy); padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; }
+    .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { color: var(--white); font-size: 1.5rem; font-weight: 700; text-decoration: none; }
+    .logo span { color: var(--gold); }
+    .nav-link { color: var(--white); text-decoration: none; margin-left: 20px; font-weight: 500; }
+    .hamburger { display: none; flex-direction: column; justify-content: space-around; width: 30px; height: 24px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1002; margin-left: auto; }
+    .hamburger span { width: 100%; height: 3px; background: var(--gold); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+    
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #2a5298 100%); color: var(--white); padding: 130px 20px 60px; }
+    .hero-content { max-width: 900px; margin: 0 auto; }
+    .breadcrumb { color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 15px; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .hero h1 { font-size: 2.2rem; margin-bottom: 15px; }
+    .hero p { font-size: 1rem; opacity: 0.9; line-height: 1.6; }
+    
+    .content { max-width: 900px; margin: 0 auto; padding: 50px 20px; }
+    
+    .county-intro { background: var(--white); padding: 30px; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 4px solid var(--gold); }
+    .county-intro h2 { color: var(--navy); font-size: 1.4rem; margin-bottom: 15px; }
+    .county-intro p { color: #555; line-height: 1.7; margin-bottom: 12px; }
+    
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin: 30px 0; }
+    .stat-card { background: var(--white); padding: 20px; border-radius: 8px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .stat-number { font-size: 1.8rem; font-weight: 700; color: var(--navy); }
+    .stat-label { color: #666; font-size: 0.8rem; }
+    
+    .cities-section { background: var(--light); padding: 40px 20px; margin: 40px -20px; }
+    .cities-content { max-width: 900px; margin: 0 auto; }
+    .cities-content h3 { color: var(--navy); font-size: 1.3rem; margin-bottom: 20px; }
+    .cities-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+    .city-item { background: var(--white); padding: 20px; border-radius: 8px; border-left: 3px solid var(--gold); }
+    .city-item h4 { color: var(--navy); margin-bottom: 8px; }
+    .city-item p { color: #666; font-size: 0.9rem; line-height: 1.5; }
+    
+    .market-insight { margin: 30px 0; }
+    .market-insight h3 { color: var(--navy); font-size: 1.3rem; margin-bottom: 15px; }
+    .market-insight ul { list-style: none; }
+    .market-insight li { 
+      padding: 12px 0 12px 25px; 
+      position: relative; 
+      border-bottom: 1px solid #eee;
+    }
+    .market-insight li::before { content: '→'; position: absolute; left: 0; color: var(--gold); }
+    
+    .cta-box { background: linear-gradient(135deg, var(--navy) 0%, #2a5298 100%); color: white; padding: 40px; border-radius: 12px; text-align: center; margin: 40px 0; }
+    .cta-box h3 { font-size: 1.5rem; margin-bottom: 15px; }
+    .cta-box p { opacity: 0.9; margin-bottom: 20px; }
+    .cta-btn { display: inline-block; padding: 14px 35px; background: var(--gold); color: var(--navy); border-radius: 8px; text-decoration: none; font-weight: 700; }
+    
+    .back-link { display: inline-block; margin-top: 30px; color: var(--blue); text-decoration: none; font-weight: 500; }
+    .back-link::before { content: '← '; }
+    
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; bottom: 0; background: var(--navy); padding: 2rem; flex-direction: column; gap: 1.5rem; }
+      .nav-menu.active { display: flex; }
+      .hero h1 { font-size: 1.7rem; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .cities-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../../" class="logo">LisPendens<span>Data</span></a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="navMenu">
+        <a href="../../" class="nav-link">Home</a>
+        <a href="../../#pricing" class="nav-link">Pricing</a>
+        <a href="../florida.html" class="nav-link">Florida</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="breadcrumb">
+        <a href="../../">Home</a> / <a href="../florida.html">Florida</a> / Walton County
+      </div>
+      <h1>Walton County Lis Pendens Data</h1>
+      <p>Foreclosure filings and pre-foreclosure opportunities in DeFuniak Springs, Freeport, and the prestigious 30A corridor. Daily data for the fastest-growing county in the Florida Panhandle.</p>
+    </div>
+  </section>
+
+  <section class="content">
+    
+    <div class="county-intro">
+      <h2>Why Walton County?</h2>
+      <p>Walton County sits at the heart of Florida's booming Emerald Coast, where pristine beaches meet timberlands and farmland. This unique geography creates two distinct real estate markets: the world-famous 30A corridor (Santa Rosa Beach, Miramar Beach, Seaside) with its $1M+ vacation homes, and the traditional inland communities of DeFuniak Springs and Freeport.</p>
+      <p>For investors, Walton County presents a rare opportunity. The county's population jumped 25% between 2010-2020, fueling both luxury development and affordable housing pressure. When foreclosures hit, they range from oceanfront estates to rural acreage — often at steep discounts due to the area's relatively small local buyer pool compared to major metros.</p>
+      <p>Our daily Lis Pendens data tracks every filing from the Walton County Courthouse, typically hitting 24-48 hours after recording. Whether you're targeting 30A short-term rental properties or inland residential, you'll see it first.</p>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">75K</div>
+        <div class="stat-label">Population</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">24hr</div>
+        <div class="stat-label">Data Delivery</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">$485K</div>
+        <div class="stat-label">Median Home Value</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">$49</div>
+        <div class="stat-label">Starting Price</div>
+      </div>
+    </div>
+    
+    <div class="cities-section">
+      <div class="cities-content">
+        <h3>Key Walton County Markets</h3>
+        <div class="cities-list">
+          <div class="city-item">
+            <h4>DeFuniak Springs</h4>
+            <p>County seat with historic Victorian architecture. Affordable housing stock and steady foreclosure volume. Good entry point for rental investors.</p>
+          </div>
+          <div class="city-item">
+            <h4>Freeport</h4>
+            <p>Fast-growing area along US-331. Mix of residential and industrial development. Strong rental demand from regional workers.</p>
+          </div>
+          <div class="city-item">
+            <h4>Santa Rosa Beach (30A)</h4>
+            <p>Premium vacation rental market. High-value properties, luxury foreclosures. Seasonal cash flow potential for STR investors.</p>
+          </div>
+          <div class="city-item">
+            <h4>Miramar Beach</h4>
+            <p>Resort lifestyle community. Condo and townhome inventory. Golf course properties, beach access premiums.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="market-insight">
+      <h3>What Makes Walton County Unique</h3>
+      <ul>
+        <li><strong>Tourism-driven appreciation:</strong> 30A commands some of Florida's highest per-square-foot prices — even foreclosures often require significant capital.</li>
+        <li><strong>Military influence:</strong> Proximity to Eglin AFB and Hurlburt Field creates consistent rental demand from service members and contractors.</li>
+        <li><strong>Limited inventory pressure:</strong> Strict development rules along 30A keep supply constrained — foreclosures in premium areas move fast.</li>
+        <li><strong>Inland affordability:</strong> 20 minutes inland from the beach, prices drop 60-70%, opening opportunities for lower-budget investors.</li>
+        <li><strong>Seasonal variability:</strong> Winter months typically see fewer filings; spring/summer judicial calendar accelerates.</li>
+      </ul>
+    </div>
+    
+    <div class="cta-box">
+      <h3>Get Walton County Lis Pendens Data</h3>
+      <p>Start at $49/month for weekly updates. Daily delivery available. No contracts.</p>
+      <a href="../../subscribe/bronze.html" class="cta-btn">Start Subscription →</a>
+    </div>
+    
+    <a href="../florida.html" class="back-link">Back to Florida Counties</a>
+    
+  </section>
+
+  <script>
+    document.getElementById('hamburgerBtn').addEventListener('click', function() {
+      this.classList.toggle('active');
+      document.getElementById('navMenu').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
