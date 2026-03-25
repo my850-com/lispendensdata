@@ -138,7 +138,7 @@
     <!-- Form -->
     <div class="form-card" id="formCard">
       <div class="step-indicator">
-        <span class="step-badge" id="stepBadge">Step 1 of 3</span>
+        <span class="step-badge" id="stepBadge">1 of 4</span>
       </div>
       
       <!-- Step 1: Personal Info -->
@@ -191,60 +191,43 @@
           <button type="button" class="btn btn-primary btn-next" onclick="nextStep(3)">Continue</button>
         </div>
         
-        <!-- Step 3: County & Phone -->
+        <!-- Step 3: County Info -->
         <div class="form-step" data-step="3">
+          <p style="color: var(--navy); font-weight: 500; margin-bottom: 20px; text-align: center;">Tell us your primary Florida county of interest. <span class="required">*</span></p>
           <div class="form-group">
-            <label>Primary County <span class="required">*</span></label>
-            <select name="county" required>
-              <option value="">Select your Florida county</option>
-              <option value="Alachua">Alachua</option>
-              <option value="Bay">Bay</option>
-              <option value="Brevard">Brevard</option>
-              <option value="Broward">Broward</option>
-              <option value="Charlotte">Charlotte</option>
-              <option value="Citrus">Citrus</option>
-              <option value="Clay">Clay</option>
-              <option value="Collier">Collier</option>
-              <option value="Columbia">Columbia</option>
-              <option value="Duval">Duval</option>
-              <option value="Escambia">Escambia</option>
-              <option value="Flagler">Flagler</option>
-              <option value="Hillsborough">Hillsborough</option>
-              <option value="Indian River">Indian River</option>
-              <option value="Lake">Lake</option>
-              <option value="Lee">Lee</option>
-              <option value="Leon">Leon</option>
-              <option value="Manatee">Manatee</option>
-              <option value="Marion">Marion</option>
-              <option value="Martin">Martin</option>
-              <option value="Miami-Dade">Miami-Dade</option>
-              <option value="Monroe">Monroe</option>
-              <option value="Okaloosa">Okaloosa</option>
-              <option value="Orange">Orange</option>
-              <option value="Osceola">Osceola</option>
-              <option value="Palm Beach">Palm Beach</option>
-              <option value="Pasco">Pasco</option>
-              <option value="Pinellas">Pinellas</option>
-              <option value="Polk">Polk</option>
-              <option value="Sarasota">Sarasota</option>
-              <option value="Seminole">Seminole</option>
-              <option value="St. Johns">St. Johns</option>
-              <option value="St. Lucie">St. Lucie</option>
-              <option value="Sumter">Sumter</option>
-              <option value="Volusia">Volusia</option>
-              <option value="Walton">Walton</option>
-            </select>
+            <label style="font-size: 0.9rem;">Enter Primary County <span class="required">*</span></label>
+            <input type="text" name="county" placeholder="e.g., Bay" required>
           </div>
           <div class="form-group">
-            <label>Phone Number <span class="required">*</span></label>
-            <input type="tel" name="phone" placeholder="(850) 555-1234" required>
-          </div>
-          <div class="form-group">
-            <label>Additional Counties (Optional)</label>
-            <input type="text" name="additionalCounties" placeholder="e.g., Bay, Okaloosa (+$29 each)">
+            <label style="font-size: 0.9rem;">List additional counties separated by comma(s)</label>
+            <input type="text" name="additionalCounties" placeholder="Okaloosa, Walton, Escambia">
           </div>
           <button type="button" class="btn btn-prev" onclick="prevStep(2)">Back</button>
-          <button type="submit" class="btn btn-submit">Request Bronze Quote</button>
+          <button type="button" class="btn btn-primary" onclick="nextStep(4)">Continue</button>
+        </div>
+        
+        <!-- Step 4: Review & Submit -->
+        <div class="form-step" data-step="4">
+          <h3 style="color: var(--navy); text-align: center; margin-bottom: 20px;">Request Your Data Quote</h3>
+          <p style="color: #555; line-height: 1.7; margin-bottom: 25px; text-align: center;">Thanks for the information you've provided. When you submit your data we will start working on your Bronze Subscription quote and deliver it by email. If you wish to finalize your subscription please follow the instructions in the email.</p>
+          <p style="color: var(--navy); font-weight: 600; text-align: center; margin-bottom: 20px;">Keep it real!</p>
+          
+          <div class="form-group" style="background: #f5f5f5; padding: 15px; border-radius: 8px; border: 1px solid #ddd;">
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.9rem;">
+              <input type="checkbox" required style="width: auto; margin: 0;">
+              <span>I'm not a robot (reCAPTCHA verification)</span>
+            </label>
+          </div>
+          
+          <div class="form-group" style="margin-top: 15px;">
+            <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 0.85rem; color: #555;">
+              <input type="checkbox" name="terms" required style="width: auto; margin-top: 3px;">
+              <span>I agree to <a href="#" style="color: var(--blue);">terms & conditions</a> provided by the company. By providing my email and/or phone number, I agree to receive email or text messages communication from LisPendensData.com and our representatives. We never share your data.</span>
+            </label>
+          </div>
+          
+          <button type="button" class="btn btn-prev" onclick="prevStep(3)">Back</button>
+          <button type="submit" class="btn btn-submit">SUBMIT</button>
         </div>
       </form>
       
@@ -253,6 +236,7 @@
         <span class="progress-dot active" data-dot="1"></span>
         <span class="progress-dot" data-dot="2"></span>
         <span class="progress-dot" data-dot="3"></span>
+        <span class="progress-dot" data-dot="4"></span>
       </div>
     </div>
     
@@ -268,11 +252,12 @@
 
   <script>
     let currentStep = 1;
+    const totalSteps = 4;
     
     function showStep(step) {
       document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
       document.querySelector(`.form-step[data-step="${step}"]`).classList.add('active');
-      document.getElementById('stepBadge').textContent = `Step ${step} of 3`;
+      document.getElementById('stepBadge').textContent = `${step} of ${totalSteps}`;
       
       // Update dots
       document.querySelectorAll('.progress-dot').forEach((dot, i) => {
@@ -285,17 +270,30 @@
     function nextStep(step) {
       // Validate current step
       const currentStepEl = document.querySelector(`.form-step[data-step="${currentStep}"]`);
-      const requiredFields = currentStepEl.querySelectorAll('[required]');
+      const requiredFields = currentStepEl.querySelectorAll('[required]:not([type="checkbox"])');
       let valid = true;
       
       requiredFields.forEach(field => {
         if (!field.value.trim()) {
           field.style.borderColor = '#d32f2f';
+          field.style.background = '#ffebee';
           valid = false;
         } else {
-          field.style.borderColor = '#e0e0e0';
+          field.style.borderColor = '';
+          field.style.background = '';
         }
       });
+      
+      // Check required checkboxes on step 4
+      if (currentStep === 4) {
+        const checkboxes = currentStepEl.querySelectorAll('input[type="checkbox"][required]');
+        checkboxes.forEach(cb => {
+          if (!cb.checked) {
+            cb.parentElement.style.color = '#d32f2f';
+            valid = false;
+          }
+        });
+      }
       
       if (!valid) return;
       
