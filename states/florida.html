@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Florida Lis Pendens Data | Miami, Tampa, Orlando Foreclosure Listings</title>
+  <meta name="description" content="Fresh Lis Pendens filings from Florida counties. Daily and weekly pre-foreclosure data for Miami-Dade, Broward, Palm Beach, Tampa, Orlando. Starting at $49.">
+  <meta name="keywords" content="Florida lis pendens, Florida foreclosure data, Miami lis pendens, Tampa foreclosure listings, Orlando pre-foreclosure, Broward county liens, Palm Beach foreclosures, Florida real estate investing">
+  <meta name="author" content="LisPendensData">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Florida Lis Pendens Data | Miami, Tampa, Orlando">
+  <meta property="og:description" content="Daily Lis Pendens filings from Florida counties. Covering Miami-Dade, Tampa, Orlando, and 64 more.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%231a3a5c' width='32' height='32' rx='6'/%3E%3Ctext x='50%25' y='55%25' font-size='14' text-anchor='middle' fill='%23c9a227' font-weight='bold' dominant-baseline='middle'%3EL%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --navy: #1a3a5c;
+      --green: #2d5a3d;
+      --gold: #c9a227;
+      --white: #ffffff;
+      --light: #f8f9fa;
+      --text: #2c3e50;
+      --blue: #1976d2;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--text); line-height: 1.6; }
+    .navbar { background: var(--navy); padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { color: var(--white); font-size: 1.5rem; font-weight: 700; text-decoration: none; }
+    .logo span { color: var(--gold); }
+    .nav-link { color: var(--white); text-decoration: none; margin-left: 20px; font-weight: 500; }
+    .nav-link:hover { color: var(--gold); }
+    
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #2a5298 100%); color: var(--white); padding: 140px 20px 80px; text-align: center; }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 15px; }
+    .live-badge { display: inline-block; background: var(--gold); color: var(--navy); padding: 8px 20px; border-radius: 20px; font-weight: 700; margin-bottom: 20px; }
+    .hero p { font-size: 1.1rem; max-width: 700px; margin: 0 auto 25px; opacity: 0.9; }
+    .hero-cta { display: inline-block; padding: 14px 35px; background: var(--gold); color: var(--navy); border-radius: 8px; text-decoration: none; font-weight: 700; margin-top: 15px; }
+    
+    .content { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+    .section-title { color: var(--navy); font-size: 1.8rem; margin-bottom: 20px; }
+    .intro-text { color: #555; line-height: 1.8; margin-bottom: 30px; font-size: 1.05rem; }
+    
+    .stats-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 40px 0; }
+    .stat-box { background: var(--white); padding: 25px; border-radius: 12px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 4px solid var(--gold); }
+    .stat-number { font-size: 2.5rem; font-weight: 700; color: var(--navy); }
+    .stat-label { color: #666; font-size: 0.9rem; }
+    
+    .cities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 30px 0; }
+    .city-card { background: var(--white); padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 2px solid #eee; transition: all 0.3s; }
+    .city-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+    .city-card h3 { color: var(--navy); font-size: 1.1rem; margin-bottom: 5px; }
+    .city-card p { color: #666; font-size: 0.85rem; }
+    
+    .counties-section { background: var(--light); padding: 60px 20px; }
+    .counties-container { max-width: 1100px; margin: 0 auto; }
+    .counties-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin-top: 25px; }
+    .county-link { display: block; padding: 12px; background: var(--white); border-radius: 6px; text-align: center; color: var(--navy); text-decoration: none; font-size: 0.9rem; transition: all 0.2s; border: 1px solid #ddd; }
+    .county-link:hover { background: var(--navy); color: var(--white); }
+    
+    .cta-section { background: linear-gradient(135deg, var(--navy) 0%, #2a5298 100%); color: white; padding: 80px 20px; text-align: center; }
+    .cta-section h2 { font-size: 2rem; margin-bottom: 15px; }
+    .cta-section p { max-width: 600px; margin: 0 auto 25px; opacity: 0.9; }
+    .cta-btn { display: inline-block; padding: 15px 40px; background: var(--gold); color: var(--navy); text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 1.1rem; }
+    
+    .footer { background: var(--navy); color: var(--white); padding: 40px 20px; text-align: center; }
+    
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 1.9rem; }
+      .stats-bar { grid-template-columns: 1fr; }
+      .cities-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../" class="logo">LisPendens<span>Data</span></a>
+      <div>
+        <a href="../" class="nav-link">Home</a>
+        <a href="../#pricing" class="nav-link">Pricing</a>
+        <a href="../#faq" class="nav-link">FAQ</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <span class="live-badge">🔴 LIVE NOW</span>
+    <h1>Florida Lis Pendens Data</h1>
+    <p>Fresh foreclosure filings from Miami to Jacksonville. Daily and weekly pre-foreclosure data for real estate investors, agents, and lenders across all 67 Florida counties.</p>
+    <a href="../subscribe/silver.html" class="hero-cta">Get Florida Data →</a>
+  </section>
+
+  <section class="content">
+    <h2 class="section-title">Why Florida Pre-Foreclosures?</h2>
+    <p class="intro-text">
+      Florida ranks among the top states for real estate investment opportunities. With a judicial foreclosure process, every foreclosure begins with a <strong>Lis Pendens filing</strong> — a public notice that creates the first window of opportunity for investors. Miami-Dade, Tampa, and Orlando consistently show high volumes of filings, making Florida a goldmine for those who act fast on fresh data.
+    </p>
+    
+    <div class="stats-bar">
+      <div class="stat-box">
+        <div class="stat-number">67</div>
+        <div class="stat-label">Florida Counties</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">Daily</div>
+        <div class="stat-label">Data Delivery</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">24hr</div>
+        <div class="stat-label">From Courthouse to You</div>
+      </div>
+    </div>
+    
+    <h2 class="section-title">Major Florida Markets We Cover</h2>
+    <div class="cities-grid">
+      <div class="city-card">
+        <h3>Miami-Dade</h3>
+        <p>High-volume filings, diverse properties</p>
+      </div>
+      <div class="city-card">
+        <h3>Tampa / St. Pete</h3>
+        <p>Fast-moving market, investor-friendly</p>
+      </div>
+      <div class="city-card">
+        <h3>Orlando</h3>
+        <p>Strong rental demand, tourist corridor</p>
+      </div>
+      <div class="city-card">
+        <h3>Jacksonville</h3>
+        <p>Largest land area, steady volume</p>
+      </div>
+      <div class="city-card">
+        <h3>Fort Lauderdale</h3>
+        <p>Hot rental market, waterfront deals</p>
+      </div>
+      <div class="city-card">
+        <h3>West Palm Beach</h3>
+        <p>Growing market, luxury opportunities</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="counties-section">
+    <div class="counties-container">
+      <h2 class="section-title">All 67 Florida Counties</h2>
+      <p class="intro-text">Select your primary county for Lis Pendens data coverage. We cover every courthouse from Escambia to Monroe.</p>
+      
+      <div class="counties-grid">
+        <a href="../subscribe/silver.html" class="county-link">Alachua</a>
+        <a href="../subscribe/silver.html" class="county-link">Baker</a>
+        <a href="../subscribe/silver.html" class="county-link">Bay</a>
+        <a href="../subscribe/silver.html" class="county-link">Bradford</a>
+        <a href="../subscribe/silver.html" class="county-link">Brevard</a>
+        <a href="../subscribe/silver.html" class="county-link">Broward</a>
+        <a href="../subscribe/silver.html" class="county-link">Calhoun</a>
+        <a href="../subscribe/silver.html" class="county-link">Charlotte</a>
+        <a href="../subscribe/silver.html" class="county-link">Citrus</a>
+        <a href="../subscribe/silver.html" class="county-link">Clay</a>
+        <a href="../subscribe/silver.html" class="county-link">Collier</a>
+        <a href="../subscribe/silver.html" class="county-link">Columbia</a>
+        <a href="../subscribe/silver.html" class="county-link">DeSoto</a>
+        <a href="../subscribe/silver.html" class="county-link">Dixie</a>
+        <a href="../subscribe/silver.html" class="county-link">Duval</a>
+        <a href="../subscribe/silver.html" class="county-link">Escambia</a>
+        <a href="../subscribe/silver.html" class="county-link">Flagler</a>
+        <a href="../subscribe/silver.html" class="county-link">Franklin</a>
+        <a href="../subscribe/silver.html" class="county-link">Gadsden</a>
+        <a href="../subscribe/silver.html" class="county-link">Gilchrist</a>
+        <a href="../subscribe/silver.html" class="county-link">Glades</a>
+        <a href="../subscribe/silver.html" class="county-link">Gulf</a>
+        <a href="../subscribe/silver.html" class="county-link">Hamilton</a>
+        <a href="../subscribe/silver.html" class="county-link">Hardee</a>
+        <a href="../subscribe/silver.html" class="county-link">Hendry</a>
+        <a href="../subscribe/silver.html" class="county-link">Hernando</a>
+        <a href="../subscribe/silver.html" class="county-link">Highlands</a>
+        <a href="../subscribe/silver.html" class="county-link">Hillsborough</a>
+        <a href="../subscribe/silver.html" class="county-link">Holmes</a>
+        <a href="../subscribe/silver.html" class="county-link">Indian River</a>
+        <a href="../subscribe/silver.html" class="county-link">Jackson</a>
+        <a href="../subscribe/silver.html" class="county-link">Jefferson</a>
+        <a href="../subscribe/silver.html" class="county-link">Lafayette</a>
+        <a href="../subscribe/silver.html" class="county-link">Lake</a>
+        <a href="../subscribe/silver.html" class="county-link">Lee</a>
+        <a href="../subscribe/silver.html" class="county-link">Leon</a>
+        <a href="../subscribe/silver.html" class="county-link">Levy</a>
+        <a href="../subscribe/silver.html" class="county-link">Liberty</a>
+        <a href="../subscribe/silver.html" class="county-link">Madison</a>
+        <a href="../subscribe/silver.html" class="county-link">Manatee</a>
+        <a href="../subscribe/silver.html" class="county-link">Marion</a>
+        <a href="../subscribe/silver.html" class="county-link">Martin</a>
+        <a href="../subscribe/silver.html" class="county-link">Miami-Dade</a>
+        <a href="../subscribe/silver.html" class="county-link">Monroe</a>
+        <a href="../subscribe/silver.html" class="county-link">Nassau</a>
+        <a href="../subscribe/silver.html" class="county-link">Okaloosa</a>
+        <a href="../subscribe/silver.html" class="county-link">Okeechobee</a>
+        <a href="../subscribe/silver.html" class="county-link">Orange</a>
+        <a href="../subscribe/silver.html" class="county-link">Osceola</a>
+        <a href="../subscribe/silver.html" class="county-link">Palm Beach</a>
+        <a href="../subscribe/silver.html" class="county-link">Pasco</a>
+        <a href="../subscribe/silver.html" class="county-link">Pinellas</a>
+        <a href="../subscribe/silver.html" class="county-link">Polk</a>
+        <a href="../subscribe/silver.html" class="county-link">Putnam</a>
+        <a href="../subscribe/silver.html" class="county-link">St. Johns</a>
+        <a href="../subscribe/silver.html" class="county-link">St. Lucie</a>
+        <a href="../subscribe/silver.html" class="county-link">Santa Rosa</a>
+        <a href="../subscribe/silver.html" class="county-link">Sarasota</a>
+        <a href="../subscribe/silver.html" class="county-link">Seminole</a>
+        <a href="../subscribe/silver.html" class="county-link">Sumter</a>
+        <a href="../subscribe/silver.html" class="county-link">Suwannee</a>
+        <a href="../subscribe/silver.html" class="county-link">Taylor</a>
+        <a href="../subscribe/silver.html" class="county-link">Union</a>
+        <a href="../subscribe/silver.html" class="county-link">Volusia</a>
+        <a href="../subscribe/silver.html" class="county-link">Wakulla</a>
+        <a href="../subscribe/silver.html" class="county-link">Walton</a>
+        <a href="../subscribe/silver.html" class="county-link">Washington</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Ready for Florida Foreclosure Data?</h2>
+    <p>Join investors and agents who get fresh Lis Pendens filings daily or weekly. No long-term contracts. Cancel anytime.</p>
+    <a href="../subscribe/silver.html" class="cta-btn">Start Florida Subscription</a>
+  </section>
+
+  <footer class="footer">
+    <p>© 2024 LisPendensData.com — Florida Foreclosure Data Specialists</p>
+    <p style="margin-top: 10px; opacity: 0.8;">67 Counties • Daily & Weekly Updates • 24 Hour Delivery</p>
+  </footer>
+</body>
+</html>
