@@ -65,7 +65,18 @@
     
     .footer { background: var(--navy); color: var(--white); padding: 40px 20px; text-align: center; }
     
+    /* Hamburger Menu */
+    .hamburger { display: none; flex-direction: column; justify-content: space-around; width: 30px; height: 24px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1002; margin-left: auto; }
+    .hamburger span { width: 100%; height: 3px; background: var(--gold); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+    
     @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-menu { position: fixed; top: 60px; left: 0; right: 0; bottom: 0; background: var(--navy); padding: 2rem; transform: translateX(100%); transition: transform 0.3s; display: flex; flex-direction: column; gap: 1.5rem; }
+      .nav-menu.active { transform: translateX(0); }
+      .nav-link { margin-left: 0; font-size: 1.2rem; }
       .hero h1 { font-size: 1.9rem; }
       .stats-bar { grid-template-columns: 1fr; }
       .cities-grid { grid-template-columns: repeat(2, 1fr); }
@@ -76,7 +87,12 @@
   <nav class="navbar">
     <div class="nav-container">
       <a href="../" class="logo">LisPendens<span>Data</span></a>
-      <div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-menu" id="navMenu">
         <a href="../" class="nav-link">Home</a>
         <a href="../#pricing" class="nav-link">Pricing</a>
         <a href="../#faq" class="nav-link">FAQ</a>
@@ -228,5 +244,19 @@
     <p>© 2024 LisPendensData.com — Florida Foreclosure Data Specialists</p>
     <p style="margin-top: 10px; opacity: 0.8;">67 Counties • Daily & Weekly Updates • 24 Hour Delivery</p>
   </footer>
+
+  <script>
+    document.getElementById('hamburgerBtn').addEventListener('click', function() {
+      this.classList.toggle('active');
+      document.getElementById('navMenu').classList.toggle('active');
+    });
+    
+    document.querySelectorAll('.nav-link').forEach(function(link) {
+      link.addEventListener('click', function() {
+        document.getElementById('hamburgerBtn').classList.remove('active');
+        document.getElementById('navMenu').classList.remove('active');
+      });
+    });
+  </script>
 </body>
 </html>
