@@ -109,7 +109,7 @@
     
     <div class="form-card" id="formCard">
       <div class="step-indicator">
-        <span class="step-badge" id="stepBadge">1 of 4</span>
+        <span class="step-badge" id="stepBadge">1 of 3</span>
       </div>
       
       <form id="silverForm" action="https://script.google.com/macros/s/AKfycbwOT6cqQZKsYJXRVrO7F9pZWgJBVEQCocNvvSfJzjz6kszmeIZVwysHYM4mM12JwPov/exec" method="POST">
@@ -162,47 +162,50 @@
           <button type="button" class="btn btn-primary" onclick="nextStep(3)">Continue</button>
         </div>
         
-        <!-- Step 3 -->
+        <!-- Step 3: County & Submit -->
         <div class="form-step" data-step="3">
-          <p style="color: var(--navy); font-weight: 500; margin-bottom: 20px; text-align: center;">Which Florida county is your primary focus? <span class="required">*</span></p>
+          <p style="color: var(--navy); font-weight: 500; margin-bottom: 20px; text-align: center;">Tell us your primary Florida county of interest. <span class="required">*</span></p>
+          
           <div class="form-group">
-            <label style="font-size: 0.9rem;">Primary County <span class="required">*</span></label>
+            <label style="font-size: 0.9rem;">Enter Primary County <span class="required">*</span></label>
             <input type="text" name="county" placeholder="e.g., Hillsborough" required>
           </div>
+          
           <div class="form-group">
-            <label style="font-size: 0.9rem;">Additional Counties (+$49 each)</label>
-            <input type="text" name="additionalCounties" placeholder="Orange, Pinellas, Palm Beach">
+            <label style="font-size: 0.9rem;">List additional counties separated by comma(s)</label>
+            <input type="text" name="additionalCounties" placeholder="Okaloosa, Walton">
           </div>
+
           <div class="form-group">
             <label>Phone Number <span class="required">*</span></label>
             <input type="tel" name="phone" placeholder="(850) 555-1234" required>
           </div>
+          
           <button type="button" class="btn btn-prev" onclick="prevStep(2)">Back</button>
-          <button type="button" class="btn btn-primary" onclick="nextStep(4)">Continue</button>
-        </div>
-        
-        <!-- Step 4: Review & Submit -->
-        <div class="form-step" data-step="4">
-          <h3 style="color: var(--navy); text-align: center; margin-bottom: 20px;">Request Your Silver Quote</h3>
-          <p style="color: #555; line-height: 1.7; margin-bottom: 25px; text-align: center;">You're requesting daily Lis Pendens data for active investing. We'll prepare your custom Silver subscription quote and email it within 24 hours. No commitment required to review.</p>
-          <p style="color: var(--navy); font-weight: 600; text-align: center; margin-bottom: 20px;">Keep it real!</p>
+          <button type="button" class="btn btn-primary" onclick="showSubmit()">Continue</button>
           
-          <div class="form-group" style="background: #f5f5f5; padding: 15px; border-radius: 8px; border: 1px solid #ddd;">
-            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.9rem;">
-              <input type="checkbox" required style="width: auto; margin: 0;">
-              <span>I'm not a robot</span>
-            </label>
+          <!-- Review & Submit Section -->
+          <div id="submitSection" style="display: none; margin-top: 30px; padding-top: 30px; border-top: 1px solid #e0e0e0;">
+            <h3 style="color: var(--navy); text-align: center; margin-bottom: 20px;">Request Your Data Quote</h3>
+            <p style="color: #555; line-height: 1.7; margin-bottom: 25px; text-align: center;">Thanks for the information you have provided. When you submit your data we will start working on your Silver Subscription quote and deliver it by email. If you wish to finalize your subscription please follow the instructions in the email.</p>
+            <p style="color: var(--navy); font-weight: 600; text-align: center; margin-bottom: 20px;">Keep it real!</p>
+            
+            <div class="form-group" style="background: #f5f5f5; padding: 15px; border-radius: 8px; border: 1px solid #ddd;">
+              <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.9rem;">
+                <input type="checkbox" required style="width: auto; margin: 0;">
+                <span>I'm not a robot</span>
+              </label>
+            </div>
+            
+            <div class="form-group" style="margin-top: 15px;">
+              <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 0.85rem; color: #555;">
+                <input type="checkbox" name="terms" required style="width: auto; margin-top: 3px;">
+                <span>I agree to <a href="#" style="color: var(--blue);">terms & conditions</a> provided by the company. By providing my email and/or phone number, I agree to receive email or text messages communication from FloridaLisPendens.com and our representatives. We never share your data.</span>
+              </label>
+            </div>
+            
+            <button type="submit" class="btn btn-submit">SUBMIT</button>
           </div>
-          
-          <div class="form-group" style="margin-top: 15px;">
-            <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 0.85rem; color: #555;">
-              <input type="checkbox" name="terms" required style="width: auto; margin-top: 3px;">
-              <span>I agree to <a href="#" style="color: var(--blue);">terms & conditions</a>. By providing my email/phone, I agree to receive communications from LisPendensData.com. We never share your data.</span>
-            </label>
-          </div>
-          
-          <button type="button" class="btn btn-prev" onclick="prevStep(3)">Back</button>
-          <button type="submit" class="btn btn-submit">SUBMIT</button>
         </div>
       </form>
       

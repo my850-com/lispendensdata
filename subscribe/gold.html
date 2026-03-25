@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gold Subscription | LisPendensData</title>
+  <style>
+    :root {
+      --navy: #1a3a5c;
+      --green: #2d5a3d;
+      --gold: #c9a227;
+      --white: #ffffff;
+      --light: #f8f9fa;
+      --text: #2c3e50;
+      --blue: #1976d2;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--light);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container { max-width: 600px; margin: 0 auto; }
+    
+    /* Header */
+    .header { text-align: center; padding: 40px 20px 20px; }
+    .logo { font-size: 1.6rem; font-weight: 700; color: var(--navy); text-decoration: none; display: block; margin-bottom: 15px; }
+    .logo span { color: var(--gold); }
+    
+    /* Hero Section */
+    .hero { text-align: center; margin-bottom: 30px; }
+    h1 { font-size: 1.9rem; color: var(--navy); margin-bottom: 20px; line-height: 1.3; }
+    .hero-badge { display: inline-block; color: var(--navy); font-size: 1.1rem; font-weight: 600; }
+    .hero-badge strong { color: var(--gold); }
+    
+    .intro-text { color: #444; line-height: 1.7; margin-bottom: 25px; text-align: center; font-size: 0.95rem; }
+    .intro-text strong { color: var(--navy); }
+    
+    /* Quote */
+    .quote-block { 
+      border-left: 3px solid var(--navy); 
+      padding: 15px 20px; 
+      margin: 25px 0; 
+      background: #f8f9fa;
+      font-style: italic;
+      color: #333;
+      line-height: 1.5;
+    }
+    .quote-attribution { 
+      display: block; 
+      margin-top: 8px; 
+      font-style: normal; 
+      font-weight: 600; 
+      color: var(--navy); 
+    }
+    
+    /* Features */
+    .features { margin-bottom: 30px; }
+    .features ul { list-style: none; }
+    .features li { 
+      padding: 12px 0; 
+      padding-left: 20px; 
+      position: relative; 
+      color: #333; 
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .features li::before { 
+      content: '•'; 
+      position: absolute; 
+      left: 0; 
+      color: var(--navy); 
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    
+    /* CTA Button */
+    .cta-button { 
+      display: block; 
+      width: 100%; 
+      padding: 18px; 
+      background: var(--blue); 
+      color: var(--white); 
+      border: none; 
+      border-radius: 8px; 
+      font-size: 1.1rem; 
+      font-weight: 600; 
+      cursor: pointer; 
+      margin: 30px 0;
+      text-decoration: none;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .cta-button:hover { background: #1565c0; }
+    
+    /* Form Card */
+    .form-card { 
+      background: var(--white); 
+      border-radius: 16px; 
+      padding: 25px; 
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
+      margin-top: 20px;
+    }
+    
+    /* Form Header */
+    .form-header { text-align: center; margin-bottom: 25px; }
+    .form-header h2 { 
+      color: var(--navy); 
+      font-size: 1.8rem; 
+      margin-bottom: 10px; 
+    }
+    .form-header p { 
+      color: #555; 
+      font-size: 0.95rem; 
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+    .form-header .phone { 
+      color: var(--blue); 
+      font-weight: 600; 
+      text-decoration: none;
+    }
+    
+    /* Step Indicator */
+    .step-indicator { text-align: center; margin-bottom: 30px; }
+    .step-indicator h3 { 
+      font-size: 2rem; 
+      color: #333; 
+      font-weight: 400;
+      margin-bottom: 5px;
+    }
+    .step-indicator h3 span { font-weight: 600; }
+    
+    /* Form Fields */
+    .form-group { margin-bottom: 20px; }
+    .form-group label { 
+      display: block; 
+      margin-bottom: 8px; 
+      color: #333; 
+      font-size: 0.95rem;
+    }
+    .form-group label .required { color: #d32f2f; }
+    .form-group input, .form-group select {
+      width: 100%; 
+      padding: 14px 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      background: var(--white);
+    }
+    .form-group input:focus, .form-group select:focus {
+      outline: none; 
+      border-color: var(--blue);
+    }
+    .form-group input::placeholder { color: #999; }
+    
+    /* Navigation Bar */
+    .nav-bar { 
+      display: flex; 
+      align-items: center; 
+      gap: 15px; 
+      margin-top: 25px;
+      padding: 12px 20px;
+      background: var(--blue);
+      border-radius: 8px;
+    }
+    .nav-btn { 
+      background: none; 
+      border: none; 
+      color: var(--white); 
+      font-size: 1.2rem; 
+      cursor: pointer; 
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+    }
+    .nav-btn.prev { margin-right: auto; }
+    .nav-btn.next { margin-left: auto; }
+    .step-counter { 
+      color: var(--white); 
+      font-size: 0.9rem; 
+      flex: 1;
+      text-align: center;
+    }
+    
+    /* Progress */
+    .progress-bar { 
+      height: 4px; 
+      background: #e0e0e0; 
+      border-radius: 2px; 
+      margin-bottom: 25px;
+      overflow: hidden;
+    }
+    .progress-fill { 
+      height: 100%; 
+      background: var(--blue); 
+      transition: width 0.3s;
+    }
+    
+    /* Submit Page */
+    .submit-page { padding: 20px 0; }
+    .submit-page h2 { 
+      font-size: 1.6rem; 
+      color: #333; 
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .submit-intro { 
+      color: #555; 
+      margin-bottom: 25px; 
+      text-align: center;
+      line-height: 1.6;
+    }
+    .motto { 
+      color: var(--navy); 
+      font-weight: 700; 
+      text-align: center; 
+      margin: 20px 0;
+    }
+    
+    /* Checkbox Areas */
+    .checkbox-area { 
+      background: var(--white); 
+      border: 1px solid #ddd; 
+      border-radius: 8px; 
+      padding: 15px; 
+      margin: 15px 0;
+    }
+    .checkbox-area.recaptcha { 
+      display: flex; 
+      align-items: center; 
+      gap: 12px; 
+    }
+    .checkbox-area.recaptcha img { 
+      width: 30px; 
+      height: auto;
+    }
+    .checkbox-area label { 
+      display: flex; 
+      align-items: flex-start; 
+      gap: 12px; 
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: #444;
+    }
+    .checkbox-area input[type="checkbox"] { 
+      width: 20px; 
+      height: 20px; 
+      margin: 0; 
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .checkbox-area a { color: var(--blue); }
+    
+    /* Submit Button in Nav */
+    .submit-btn { 
+      background: var(--blue); 
+      color: var(--white); 
+      border: none; 
+      padding: 10px 25px; 
+      border-radius: 6px; 
+      font-weight: 600; 
+      cursor: pointer;
+      margin-left: auto;
+    }
+    
+    /* Steps */
+    .form-step { display: none; }
+    .form-step.active { display: block; }
+    
+    /* Success */
+    .success-message { display: none; text-align: center; padding: 40px 20px; }
+    .success-message.show { display: block; }
+    .success-icon { 
+      width: 80px; 
+      height: 80px; 
+      background: var(--green); 
+      border-radius: 50%; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      margin: 0 auto 20px; 
+      color: white; 
+      font-size: 40px; 
+    }
+    .success-message h2 { 
+      color: var(--navy); 
+      margin-bottom: 15px; 
+    }
+    .success-message p { 
+      color: #666; 
+      margin-bottom: 10px; 
+    }
+    
+    @media (max-width: 480px) {
+      h1 { font-size: 1.6rem; }
+      .form-header h2 { font-size: 1.5rem; }
+      .step-indicator h3 { font-size: 1.7rem; }
+      .form-card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Hero Section -->
+    <div class="hero" id="heroSection">
+      <div class="header">
+        <a href="../" class="logo">LisPendens<span>Data</span></a>
+      </div>
+      
+      <h1>Premium Access with Done-For-You Marketing Integration</h1>
+      
+      <p class="intro-text">
+        <strong class="hero-badge"><span>Gold Subscription</span> Customized For You</strong>
+      </p>
+      
+      <p class="intro-text">
+        Our most complete solution — designed for investors and real estate teams who want daily, county and multi-county Lis Pendens data and ready-to-print marketing materials. Each Gold member receives daily data for 1 Florida county, plus three fully customized marketing letters automatically merged with your data, ready to mail. You'll save hours of research and mailing prep every week. Perfect for: investors, wholesalers, and professionals running consistent outreach to pre-foreclosure property owners.
+      </p>
+      
+      <div class="quote-block">
+        "Data is the foundation of real estate decisions."
+        <span class="quote-attribution">— Sam Zell</span>
+      </div>
+      
+      <div class="features">
+        <ul>
+          <li>Daily Lis Pendens data for 1 Florida county</li>
+          <li>3 custom pre-merged marketing letters ready to print</li>
+          <li>Expand your coverage with optional county add-ons at $49 per</li>
+        </ul>
+      </div>
+      
+      <button class="cta-button" onclick="showForm()">Click Here To Start Gold Subscription</button>
+    </div>
+    
+    <!-- Form Card -->
+    <div class="form-card" id="formCard" style="display: none;">
+      
+      <!-- Form Header -->
+      <div class="form-header">
+        <h2>Gold Subscription Quote</h2>
+        <p><strong>Daily data AND marketing</strong> in one or more Florida counties.</p>
+        <p>Let's get started. Tell us about your needs below. Once we collect your answers we will send your quote via email. If you wish to proceed please follow the instructions in your email. If you would prefer to receive a quote over the phone please call <a href="tel:850-998-8500" class="phone">(850) 998-8500</a>.</p>
+      </div>
+      
+      <!-- Progress Bar -->
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width: 33%;"></div>
+      </div>
+      
+      <form id="goldForm" action="https://script.google.com/macros/s/AKfycbwOT6cqQZKsYJXRVrO7F9pZWgJBVEQCocNvvSfJzjz6kszmeIZVwysHYM4mM12JwPov/exec" method="POST">
+        <input type="hidden" name="plan" value="Gold">
+        
+        <!-- Step 1: Name & Email -->
+        <div class="form-step active" data-step="1">
+          <div class="step-indicator">
+            <h3>Step <span>1</span> of 3</h3>
+          </div>
+          
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" name="firstName" placeholder="First Name" required>
+          </div>
+          
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" name="lastName" placeholder="Last Name" required>
+          </div>
+          
+          <div class="form-group">
+            <label>Email <span class="required">*</span></label>
+            <input type="email" name="email" placeholder="Email" required>
+          </div>
+          
+          <div class="nav-bar">
+            <span class="step-counter">1 of 4</span>
+            <button type="button" class="nav-btn next" onclick="nextStep(2)">→</button>
+          </div>
+        </div>
+        
+        <!-- Step 2: User Type -->
+        <div class="form-step" data-step="2">
+          <div class="step-indicator">
+            <h3>Step <span>2</span> of 3</h3>
+          </div>
+          
+          <div class="form-group">
+            <label>Data User Type <span class="required">*</span></label>
+            <select name="userType" required>
+              <option value="">Please Select</option>
+              <option value="Real Estate Investor">Real Estate Investor</option>
+              <option value="Real Estate Agent">Real Estate Agent</option>
+              <option value="Mortgage Lender">Mortgage Lender</option>
+              <option value="Real Estate Attorney">Real Estate Attorney</option>
+              <option value="Wholesaler">Wholesaler</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label>Preferred Data Format</label>
+            <select name="dataFormat">
+              <option value="">Please Select Data Type</option>
+              <option value="CSV File">CSV File</option>
+              <option value="Excel Sheet">Excel Sheet</option>
+              <option value="PDF File">PDF File</option>
+              <option value="Letter Merged (Gold Feature)">Letter Merged (Gold Feature)</option>
+              <option value="All Formats">All Formats</option>
+            </select>
+          </div>
+          
+          <div class="nav-bar">
+            <button type="button" class="nav-btn prev" onclick="prevStep(1)">←</button>
+            <span class="step-counter">2 of 4</span>
+            <button type="button" class="nav-btn next" onclick="nextStep(3)">→</button>
+          </div>
+        </div>
+        
+        <!-- Step 3: County -->
+        <div class="form-step" data-step="3">
+          <div class="step-indicator">
+            <h3>Step <span>3</span> of 3</h3>
+          </div>
+          
+          <p style="color: var(--navy); font-weight: 500; margin-bottom: 20px;">
+            Tell us your primary Florida county of interest. (required) <span class="required">*</span>
+          </p>
+          
+          <div class="form-group" style="display: flex; gap: 20px; align-items: center;">
+            <label style="flex: 0 0 auto;">Enter Primary County <span class="required">*</span></label>
+            <input type="text" name="county" placeholder="Value" style="flex: 1;" required>
+          </div>
+          
+          <div class="form-group">
+            <label>List additional counties separated by comma(s)</label>
+            <input type="text" name="additionalCounties" placeholder="">
+          </div>
+          
+          <div class="form-group">
+            <label>Test additional counties</label>
+            <input type="text" name="testCounties" placeholder="">
+          </div>
+          
+          <div class="nav-bar">
+            <button type="button" class="nav-btn prev" onclick="prevStep(2)">←</button>
+            <span class="step-counter">3 of 4</span>
+            <button type="button" class="nav-btn next" onclick="nextStep(4)">→</button>
+          </div>
+        </div>
+        
+        <!-- Step 4: Review & Submit -->
+        <div class="form-step" data-step="4">
+          <div class="submit-page">
+            <h2>Request Your Data Quote</h2>
+            
+            <p class="submit-intro">
+              Thanks for the information you have provided. When you submit your data we will start working on your Gold Subscription quote and deliver it by email. If you wish to finalize your subscription please follow the instructions in the email.
+            </p>
+            
+            <p class="motto">Keep it real!</p>
+            
+            <div class="checkbox-area recaptcha">
+              <input type="checkbox" id="recaptcha" required>
+              <label for="recaptcha">I'm not a robot</label>
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 50'%3E%3Crect fill='%23f5f5f5' width='100' height='50'/%3E%3Ctext x='50' y='32' font-size='10' text-anchor='middle' fill='%23666'%3EreCAPTCHA↳%3C/text%3E%3C/svg%3E" alt="reCAPTCHA" style="margin-left: auto; opacity: 0.5;">
+            </div>
+            
+            <div class="checkbox-area">
+              <label>
+                <input type="checkbox" name="terms" required>
+                <span>I agree to <a href="#">terms & conditions</a> provided by the company. By providing my email and/or phone number, I agree to receive email or text messages communication from FloridaLisPendens.com and our representatives. We never share your data.</span>
+              </label>
+            </div>
+            
+            <div class="nav-bar" style="margin-top: 30px;">
+              <button type="button" class="nav-btn prev" onclick="prevStep(3)">←</button>
+              <span class="step-counter">4 of 4</span>
+              <button type="submit" class="submit-btn">SUBMIT</button>
+            </div>
+          </div>
+        </div>
+        
+      </form>
+      
+      <!-- Success Message -->
+      <div class="success-message" id="successMessage">
+        <div class="success-icon">✓</div>
+        <h2>Gold Quote Request Sent!</h2>
+        <p>Thank you! We'll email your Gold subscription quote within 24 hours.</p>
+        <p style="margin-top: 10px; color: #666;">Check your inbox for next steps.</p>
+        <a href="../" style="display: inline-block; margin-top: 25px; padding: 12px 30px; background: var(--blue); color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">Back to Home</a>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  <script>
+    let currentStep = 1;
+    
+    function showForm() {
+      document.getElementById('heroSection').style.display = 'none';
+      document.getElementById('formCard').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+    
+    function updateProgress() {
+      const progress = (currentStep / 4) * 100;
+      document.getElementById('progressFill').style.width = progress + '%';
+    }
+    
+    function validateStep(step) {
+      const stepEl = document.querySelector(`.form-step[data-step="${step}"]`);
+      const requiredFields = stepEl.querySelectorAll('[required]:not([type="checkbox"])');
+      let valid = true;
+      
+      requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+          field.style.borderColor = '#d32f2f';
+          valid = false;
+        } else {
+          field.style.borderColor = '';
+        }
+      });
+      
+      return valid;
+    }
+    
+    function nextStep(step) {
+      if (!validateStep(currentStep)) return;
+      
+      document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+      document.querySelector(`.form-step[data-step="${step}"]`).classList.add('active');
+      currentStep = step;
+      updateProgress();
+    }
+    
+    function prevStep(step) {
+      document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+      document.querySelector(`.form-step[data-step="${step}"]`).classList.add('active');
+      currentStep = step;
+      updateProgress();
+    }
+    
+    document.getElementById('goldForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      
+      fetch(form.action, {
+        method: 'POST',
+        body: new URLSearchParams(data),
+        mode: 'no-cors'
+      }).then(() => {
+        document.getElementById('goldForm').style.display = 'none';
+        document.querySelector('.progress-bar').style.display = 'none';
+        document.querySelector('.form-header').style.display = 'none';
+        document.getElementById('successMessage').classList.add('show');
+      }).catch(() => {
+        document.getElementById('goldForm').style.display = 'none';
+        document.querySelector('.progress-bar').style.display = 'none';
+        document.querySelector('.form-header').style.display = 'none';
+        document.getElementById('successMessage').classList.add('show');
+      });
+    });
+  </script>
+</body>
+</html>
