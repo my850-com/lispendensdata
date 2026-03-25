@@ -151,23 +151,6 @@
     
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
     
-    /* Address Search Field */
-    .address-search {
-      position: relative;
-    }
-    .address-search::before {
-      content: '🔍';
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 1rem;
-      color: #999;
-    }
-    .address-search input {
-      padding-left: 45px;
-    }
-    
     /* Nav Bar */
     .nav-bar { 
       display: flex; 
@@ -333,9 +316,9 @@
             <input type="email" name="email" placeholder="Email" required>
           </div>
           
-          <div class="form-group address-search">
+          <div class="form-group">
             <label>Address</label>
-            <input type="text" name="searchAddress" placeholder="Search address">
+            <input type="text" name="searchAddress" placeholder="Street Address">
           </div>
           
           <div class="form-group">
