@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Texas Lis Pendens Data | Houston, Dallas, Austin, San Antonio Foreclosure Listings</title>
+  <meta name="description" content="Fresh Lis Pendens filings from Texas counties. Daily and weekly pre-foreclosure data for Houston, Dallas, Austin, San Antonio, and all 254 Texas counties. Starting at $49.">
+  <meta name="keywords" content="Texas lis pendens, Texas foreclosure data, Houston lis pendens, Dallas foreclosure listings, Austin pre-foreclosure, San Antonio foreclosures, Texas real estate investing">
+  <meta name="author" content="LisPendensData">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Texas Lis Pendens Data | Houston, Dallas, Austin">
+  <meta property="og:description" content="Daily Lis Pendens filings from Texas counties. Covering Houston, Dallas, Austin, and all 254 counties.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%231a3a5c' width='32' height='32' rx='6'/%3E%3Ctext x='50%25' y='55%25' font-size='14' text-anchor='middle' fill='%23c9a227' font-weight='bold' dominant-baseline='middle'%3EL%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --navy: #1a3a5c;
+      --green: #2d5a3d;
+      --gold: #c9a227;
+      --white: #ffffff;
+      --light: #f8f9fa;
+      --text: #2c3e50;
+      --blue: #1976d2;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--text); line-height: 1.6; }
+    .navbar { background: var(--navy); padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { color: var(--white); font-size: 1.5rem; font-weight: 700; text-decoration: none; }
+    .logo span { color: var(--gold); }
+    .nav-link { color: var(--white); text-decoration: none; margin-left: 20px; font-weight: 500; }
+    .nav-link:hover { color: var(--gold); }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #2a5298 100%); color: var(--white); padding: 140px 20px 80px; text-align: center; }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 15px; }
+    .hero p { font-size: 1.1rem; max-width: 700px; margin: 0 auto 25px; opacity: 0.9; }
+    .hero-cta { display: inline-block; padding: 14px 35px; background: var(--gold); color: var(--navy); border-radius: 8px; text-decoration: none; font-weight: 700; margin-top: 15px; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+    .section-title { color: var(--navy); font-size: 1.8rem; margin-bottom: 20px; }
+    .intro-text { color: #555; line-height: 1.8; margin-bottom: 30px; font-size: 1.05rem; }
+    .stats-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 40px 0; }
+    .stat-box { background: var(--white); padding: 25px; border-radius: 12px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 4px solid var(--gold); }
+    .stat-number { font-size: 2.5rem; font-weight: 700; color: var(--navy); }
+    .stat-label { color: #666; font-size: 0.9rem; }
+    .cities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 30px 0; }
+    .city-card { background: var(--white); padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 2px solid #eee; transition: all 0.3s; }
+    .city-card:hover { transform: translateY(-3px); border-color: var(--gold); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    .city-name { color: var(--navy); font-weight: 600; font-size: 1.1rem; margin-bottom: 5px; }
+    .city-county { color: #777; font-size: 0.85rem; }
+    .pricing-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin: 40px 0; }
+    .pricing-card { background: white; border-radius: 12px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); text-align: center; }
+    .pricing-card.featured { border: 3px solid var(--gold); transform: scale(1.02); }
+    .plan-name { font-size: 1.4rem; color: var(--navy); font-weight: 700; margin-bottom: 10px; }
+    .plan-price { font-size: 2.5rem; font-weight: 800; color: var(--navy); margin-bottom: 5px; }
+    .plan-subtitle { color: #777; font-size: 0.9rem; margin-bottom: 20px; }
+    .plan-features { list-style: none; text-align: left; margin-bottom: 25px; }
+    .plan-features li { padding: 8px 0; border-bottom: 1px solid #eee; color: #555; }
+    .plan-features li::before { content: '✓'; color: var(--green); font-weight: bold; margin-right: 10px; }
+    .btn { display: inline-block; padding: 12px 30px; background: var(--gold); color: var(--navy); text-decoration: none; border-radius: 8px; font-weight: 700; transition: all 0.3s; }
+    .btn:hover { background: #b8941f; transform: translateY(-2px); }
+    .info-section { background: var(--light); padding: 50px 20px; margin: 40px -20px; }
+    .info-content { max-width: 1100px; margin: 0 auto; }
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .info-block h3 { color: var(--navy); margin-bottom: 15px; font-size: 1.2rem; }
+    .info-block p { color: #555; line-height: 1.7; }
+    .cta-section { background: linear-gradient(135deg, var(--navy) 0%, #2a5298 100%); color: white; padding: 60px 20px; text-align: center; margin: 40px -20px -60px; }
+    .cta-section h2 { margin-bottom: 15px; font-size: 1.8rem; }
+    .cta-section p { max-width: 600px; margin: 0 auto 25px; opacity: 0.9; }
+    .cta-btn { display: inline-block; padding: 15px 40px; background: var(--gold); color: var(--navy); text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 1.1rem; }
+    .footer { background: var(--navy); color: var(--white); padding: 30px 20px; text-align: center; margin-top: 60px; }
+    .footer p { opacity: 0.8; }
+    .footer a { color: var(--gold); }
+    @media (max-width: 768px) {
+      .hero { padding: 120px 15px 60px; }
+      .hero h1 { font-size: 1.8rem; }
+      .cities-grid { grid-template-columns: 1fr; }
+      .stats-bar { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../" class="logo">LisPendens<span>Data</span></a>
+      <div>
+        <a href="../" class="nav-link">Home</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Texas Lis Pendens Data</h1>
+    <p>Fresh pre-foreclosure filings from all 254 Texas counties. Daily and weekly delivery available for Houston, Dallas, Austin, San Antonio, and every county courthouse in the Lone Star State.</p>
+    <a href="#pricing" class="hero-cta">Get Started</a>
+  </section>
+
+  <section class="content">
+    <div class="stats-bar">
+      <div class="stat-box">
+        <div class="stat-number">254</div>
+        <div class="stat-label">Counties Covered</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">Daily</div>
+        <div class="stat-label">Delivery Available</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">$49</div>
+        <div class="stat-label">Starting Price</div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Major Metro Areas</h2>
+    <p class="intro-text">We cover the major Texas metros plus every county from Harris to Travis, Dallas to Bexar. All filings pulled fresh from county courthouse records.</p>
+    
+    <div class="cities-grid">
+      <div class="city-card">
+        <div class="city-name">Houston</div>
+        <div class="city-county">Harris County</div>
+      </div>
+      <div class="city-card">
+        <div class="city-name">Dallas</div>
+        <div class="city-county">Dallas County</div>
+      </div>
+      <div class="city-card">
+        <div class="city-name">Austin</div>
+        <div class="city-county">Travis County</div>
+      </div>
+      <div class="city-card">
+        <div class="city-name">San Antonio</div>
+        <div class="city-county">Bexar County</div>
+      </div>
+      <div class="city-card">
+        <div class="city-name">Fort Worth</div>
+        <div class="city-county">Tarrant County</div>
+      </div>
+      <div class="city-card">
+        <div class="city-name">El Paso</div>
+        <div class="city-county">El Paso County</div>
+      </div>
+    </div>
+
+    <section id="pricing">
+      <h2 class="section-title">Texas Pricing Plans</h2>
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <div class="plan-name">Bronze</div>
+          <div class="plan-price">$49</div>
+          <div class="plan-subtitle">+ $29/county • Weekly delivery</div>
+          <ul class="plan-features">
+            <li>Weekly email updates (Monday)</li>
+            <li>1 primary county included</li>
+            <li>Add counties (+$29 each)</li>
+            <li>CSV, Excel & PDF downloads</li>
+            <li>Case details & property info</li>
+          </ul>
+          <a href="../subscribe/bronze.html" class="btn">Subscribe Bronze</a>
+        </div>
+        
+        <div class="pricing-card featured">
+          <div class="plan-name">Silver</div>
+          <div class="plan-price">$139</div>
+          <div class="plan-subtitle">+ $49/county • Daily delivery</div>
+          <ul class="plan-features">
+            <li>Daily email updates (Mon-Fri)</li>
+            <li>1 primary county included</li>
+            <li>Add counties (+$49 each)</li>
+            <li>Owner contact data included</li>
+            <li>Priority email support</li>
+          </ul>
+          <a href="../subscribe/silver.html" class="btn">Subscribe Silver</a>
+        </div>
+        
+        <div class="pricing-card">
+          <div class="plan-name">Gold</div>
+          <div class="plan-price">$229</div>
+          <div class="plan-subtitle">+ $49/county • Daily + Letters</div>
+          <ul class="plan-features">
+            <li>Daily email + letter files (Mon-Fri)</li>
+            <li>1 primary county included</li>
+            <li>Add counties (+$49 each)</li>
+            <li>5 print-ready letter templates</li>
+            <li>Skip tracing data included</li>
+          </ul>
+          <a href="../subscribe/gold.html" class="btn">Subscribe Gold</a>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <section class="info-section">
+    <div class="info-content">
+      <div class="info-grid">
+        <div class="info-block">
+          <h3>📍 Texas Coverage</h3>
+          <p>From the Houston metro to the Permian Basin, we cover every Texas county courthouse. Whether you're investing in Dallas-Fort Worth or tracking rural properties, we've got your data covered.</p>
+        </div>
+        <div class="info-block">
+          <h3>⚡ Fresh Data</h3>
+          <p>Texas lis pendens filings updated daily. Silver and Gold plans receive same-day filings. Bronze plan gets weekly digests every Monday. All verified against official county records.</p>
+        </div>
+        <div class="info-block">
+          <h3>💼 Investor Ready</h3>
+          <p>CSV exports, owner contact data, and print-ready mailer templates for direct mail campaigns. Turn filings into leads fast.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Get Texas Lis Pendens Data Today</h2>
+    <p>Join hundreds of Texas investors and agents leveraging pre-foreclosure data. No contracts, cancel anytime.</p>
+    <a href="../form/?state=tx" class="cta-btn">Request County Count →</a>
+  </section>
+
+  <footer class="footer">
+    <p>© 2024 LisPendensData.com — Texas Foreclosure Data</p>
+    <p style="margin-top: 10px;"><a href="mailto:data@my850.com">data@my850.com</a></p>
+  </footer>
+</body>
+</html>
