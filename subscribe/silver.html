@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bronze Subscription | LisPendensData</title>
+  <title>Silver Subscription | LisPendensData</title>
   <style>
     :root {
       --navy: #1a3a5c;
@@ -22,37 +22,28 @@
       padding: 20px;
     }
     .container { max-width: 600px; margin: 0 auto; }
-    
-    /* Header */
     .header { text-align: center; padding: 40px 20px 30px; }
     .logo { font-size: 1.8rem; font-weight: 700; color: var(--navy); text-decoration: none; display: inline-block; margin-bottom: 10px; }
     .logo span { color: var(--gold); }
     .badge { display: inline-block; background: #e3f2fd; color: var(--navy); padding: 8px 20px; border-radius: 20px; font-size: 0.9rem; font-weight: 500; margin-top: 15px; }
     .badge strong { color: var(--blue); }
-    
-    /* Title */
     h1 { font-size: 2rem; color: var(--navy); margin-bottom: 15px; text-align: center; }
     .subtitle { color: #666; text-align: center; margin-bottom: 30px; line-height: 1.6; }
     .subtitle strong { color: var(--navy); }
-    
-    /* Features */
     .features { background: var(--white); padding: 25px; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
     .features h3 { color: var(--navy); font-size: 1.1rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
     .features ul { list-style: none; }
     .features li { padding: 10px 0; padding-left: 28px; position: relative; color: #555; border-bottom: 1px solid #f0f0f0; }
     .features li:last-child { border-bottom: none; }
-    .features li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: bold; font-size: 1.1rem; }
-    
-    /* Form Card */
+    .features li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: bold; font-size: 1.1rem; }
+    .quote-info { background: #e3f2fd; padding: 15px; border-radius: 8px; margin: 20px 0; text-align: center; }
+    .quote-info p { color: var(--navy); font-size: 0.9rem; }
+    .phone { color: var(--blue); font-weight: 600; text-decoration: none; }
     .form-card { background: var(--white); border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
     .step-indicator { text-align: center; margin-bottom: 25px; }
-    .step-badge { display: inline-block; background: var(--navy); color: var(--white); padding: 8px 24px; border-radius: 20px; font-size: 1rem; font-weight: 600; }
-    
-    /* Form Steps */
+    .step-badge { display: inline-block; background: var(--gold); color: var(--navy); padding: 8px 24px; border-radius: 20px; font-size: 1rem; font-weight: 600; }
     .form-step { display: none; }
     .form-step.active { display: block; }
-    
-    /* Form Fields */
     .form-group { margin-bottom: 20px; }
     .form-group label { display: block; margin-bottom: 8px; color: var(--navy); font-weight: 500; font-size: 0.95rem; }
     .form-group label .required { color: #d32f2f; }
@@ -69,11 +60,7 @@
       box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
     }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-    
-    /* Select Styling */
     .form-group select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
-    
-    /* Buttons */
     .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 16px; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
     .btn-primary { background: var(--blue); color: var(--white); }
     .btn-primary:hover { background: #1565c0; }
@@ -83,23 +70,13 @@
     .btn-prev::before { content: '←'; margin-right: 8px; }
     .btn-submit { background: var(--gold); color: var(--navy); }
     .btn-submit:hover { background: #b8941f; }
-    
-    /* Progress Bar */
     .progress { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
     .progress-dot { width: 10px; height: 10px; border-radius: 50%; background: #e0e0e0; transition: all 0.3s; }
-    .progress-dot.active { background: var(--blue); }
+    .progress-dot.active { background: var(--gold); }
     .progress-dot.completed { background: var(--green); }
-    
-    /* Success */
     .success-message { display: none; text-align: center; padding: 40px 20px; }
     .success-message.show { display: block; }
     .success-icon { width: 80px; height: 80px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: white; font-size: 40px; }
-    
-    /* Quote Info */
-    .quote-info { background: #e3f2fd; padding: 15px; border-radius: 8px; margin: 20px 0; text-align: center; }
-    .quote-info p { color: var(--navy); font-size: 0.9rem; }
-    .phone { color: var(--blue); font-weight: 600; text-decoration: none; }
-    
     @media (max-width: 480px) {
       .form-row { grid-template-columns: 1fr; }
       h1 { font-size: 1.6rem; }
@@ -109,41 +86,38 @@
 </head>
 <body>
   <div class="container">
-    <!-- Header -->
     <div class="header">
       <a href="/" class="logo">LisPendens<span>Data</span></a>
-      <div class="badge">Used By: <strong>Lenders, Investors & Agents</strong></div>
+      <div class="badge">Used By: <strong>Active Investors & Agents</strong></div>
     </div>
     
-    <h1>Weekly Florida Lis Pendens Update</h1>
-    <p class="subtitle">Bronze Subscription Customized For You.<br>Stay ahead of foreclosure opportunities with verified weekly Lis Pendens data delivered directly to your inbox.</p>
+    <h1>Daily Florida Lis Pendens Updates</h1>
+    <p class="subtitle"><strong>Silver Subscription</strong> — Stay ahead with daily filings delivered every weekday.<br>Perfect for serious investors and agents who need fresh data faster.</p>
     
-    <!-- Features -->
     <div class="features">
-      <h3>📋 What's Included</h3>
+      <h3>⭐ Silver Plan Features</h3>
       <ul>
-        <li><strong>Weekly Lis Pendens Data</strong> for 1 Florida county</li>
-        <li><strong>Custom file formats</strong> (Excel, CSV, PDF, etc.)</li>
-        <li><strong>Personal onboarding session</strong> to confirm your target counties</li>
-        <li><strong>Additional counties</strong> available at $29 per county</li>
-        <li>Perfect for: first-time investors, real estate agents, mortgage lenders</li>
+        <li><strong>Daily email updates</strong> (Monday-Friday)</li>
+        <li><strong>1 primary county included</strong> ($49 each additional)</li>
+        <li><strong>Owner contact data included</strong> for direct outreach</li>
+        <li><strong>CSV, Excel & PDF downloads</strong> in all formats</li>
+        <li><strong>Priority email support</strong> — questions answered fast</li>
+        <li><strong>Data delivered within 24 hours</strong> of court filing</li>
+        <li>Best for: Active investors, real estate agents, wholesalers</li>
       </ul>
     </div>
     
-    <!-- Quote Info -->
     <div class="quote-info">
-      <p>📧 We'll email your quote after you complete all steps.<br>Questions? Call <a href="tel:850-998-8500" class="phone">(850) 998-8500</a></p>
+      <p>📧 Quote delivered within 24 hours.<br>Questions? Call <a href="tel:850-998-8500" class="phone">(850) 998-8500</a></p>
     </div>
     
-    <!-- Form -->
     <div class="form-card" id="formCard">
       <div class="step-indicator">
         <span class="step-badge" id="stepBadge">1 of 4</span>
       </div>
       
-      <!-- Step 1: Personal Info -->
-      <form id="bronzeForm" action="https://script.google.com/macros/s/AKfycbwOT6cqQZKsYJXRVrO7F9pZWgJBVEQCocNvvSfJzjz6kszmeIZVwysHYM4mM12JwPov/exec" method="POST">
-        <input type="hidden" name="plan" value="Bronze">
+      <form id="silverForm" action="https://script.google.com/macros/s/AKfycbwOT6cqQZKsYJXRVrO7F9pZWgJBVEQCocNvvSfJzjz6kszmeIZVwysHYM4mM12JwPov/exec" method="POST">
+        <input type="hidden" name="plan" value="Silver">
         
         <!-- Step 1 -->
         <div class="form-step active" data-step="1">
@@ -164,16 +138,17 @@
           <button type="button" class="btn btn-primary btn-next" onclick="nextStep(2)">Continue</button>
         </div>
         
-        <!-- Step 2: User Type & Format -->
+        <!-- Step 2 -->
         <div class="form-step" data-step="2">
           <div class="form-group">
-            <label>Data User Type <span class="required">*</span></label>
+            <label>I am a... <span class="required">*</span></label>
             <select name="userType" required>
               <option value="">Please Select</option>
               <option value="Real Estate Investor">Real Estate Investor</option>
               <option value="Real Estate Agent">Real Estate Agent</option>
               <option value="Mortgage Lender">Mortgage Lender</option>
               <option value="Real Estate Attorney">Real Estate Attorney</option>
+              <option value="Wholesaler">Wholesaler</option>
               <option value="Other">Other</option>
             </select>
           </div>
@@ -188,19 +163,23 @@
             </select>
           </div>
           <button type="button" class="btn btn-prev" onclick="prevStep(1)">Back</button>
-          <button type="button" class="btn btn-primary btn-next" onclick="nextStep(3)">Continue</button>
+          <button type="button" class="btn btn-primary" onclick="nextStep(3)">Continue</button>
         </div>
         
-        <!-- Step 3: County Info -->
+        <!-- Step 3 -->
         <div class="form-step" data-step="3">
-          <p style="color: var(--navy); font-weight: 500; margin-bottom: 20px; text-align: center;">Tell us your primary Florida county of interest. <span class="required">*</span></p>
+          <p style="color: var(--navy); font-weight: 500; margin-bottom: 20px; text-align: center;">Which Florida county is your primary focus? <span class="required">*</span></p>
           <div class="form-group">
-            <label style="font-size: 0.9rem;">Enter Primary County <span class="required">*</span></label>
-            <input type="text" name="county" placeholder="e.g., Bay" required>
+            <label style="font-size: 0.9rem;">Primary County <span class="required">*</span></label>
+            <input type="text" name="county" placeholder="e.g., Hillsborough" required>
           </div>
           <div class="form-group">
-            <label style="font-size: 0.9rem;">List additional counties separated by comma(s)</label>
-            <input type="text" name="additionalCounties" placeholder="Okaloosa, Walton, Escambia">
+            <label style="font-size: 0.9rem;">Additional Counties (+$49 each)</label>
+            <input type="text" name="additionalCounties" placeholder="Orange, Pinellas, Palm Beach">
+          </div>
+          <div class="form-group">
+            <label>Phone Number <span class="required">*</span></label>
+            <input type="tel" name="phone" placeholder="(850) 555-1234" required>
           </div>
           <button type="button" class="btn btn-prev" onclick="prevStep(2)">Back</button>
           <button type="button" class="btn btn-primary" onclick="nextStep(4)">Continue</button>
@@ -208,21 +187,21 @@
         
         <!-- Step 4: Review & Submit -->
         <div class="form-step" data-step="4">
-          <h3 style="color: var(--navy); text-align: center; margin-bottom: 20px;">Request Your Data Quote</h3>
-          <p style="color: #555; line-height: 1.7; margin-bottom: 25px; text-align: center;">Thanks for the information you've provided. When you submit your data we will start working on your Bronze Subscription quote and deliver it by email. If you wish to finalize your subscription please follow the instructions in the email.</p>
+          <h3 style="color: var(--navy); text-align: center; margin-bottom: 20px;">Request Your Silver Quote</h3>
+          <p style="color: #555; line-height: 1.7; margin-bottom: 25px; text-align: center;">You're requesting daily Lis Pendens data for active investing. We'll prepare your custom Silver subscription quote and email it within 24 hours. No commitment required to review.</p>
           <p style="color: var(--navy); font-weight: 600; text-align: center; margin-bottom: 20px;">Keep it real!</p>
           
           <div class="form-group" style="background: #f5f5f5; padding: 15px; border-radius: 8px; border: 1px solid #ddd;">
             <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.9rem;">
               <input type="checkbox" required style="width: auto; margin: 0;">
-              <span>I'm not a robot (reCAPTCHA verification)</span>
+              <span>I'm not a robot</span>
             </label>
           </div>
           
           <div class="form-group" style="margin-top: 15px;">
             <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 0.85rem; color: #555;">
               <input type="checkbox" name="terms" required style="width: auto; margin-top: 3px;">
-              <span>I agree to <a href="#" style="color: var(--blue);">terms & conditions</a> provided by the company. By providing my email and/or phone number, I agree to receive email or text messages communication from LisPendensData.com and our representatives. We never share your data.</span>
+              <span>I agree to <a href="#" style="color: var(--blue);">terms & conditions</a>. By providing my email/phone, I agree to receive communications from LisPendensData.com. We never share your data.</span>
             </label>
           </div>
           
@@ -231,7 +210,6 @@
         </div>
       </form>
       
-      <!-- Progress Dots -->
       <div class="progress">
         <span class="progress-dot active" data-dot="1"></span>
         <span class="progress-dot" data-dot="2"></span>
@@ -240,12 +218,11 @@
       </div>
     </div>
     
-    <!-- Success Message -->
     <div class="success-message" id="successMessage">
       <div class="success-icon">✓</div>
-      <h2>Quote Request Sent!</h2>
-      <p>Thank you! We'll email your Bronze subscription quote within 24 hours.</p>
-      <p style="margin-top: 15px; color: #666;">Check your inbox (and spam folder) for next steps.</p>
+      <h2>Silver Quote Request Sent!</h2>
+      <p>Thank you! We'll email your Silver subscription quote within 24 hours.</p>
+      <p style="margin-top: 15px; color: #666;">Check your inbox for next steps.</p>
       <a href="../" class="btn btn-primary" style="margin-top: 25px;">Back to Home</a>
     </div>
   </div>
@@ -258,8 +235,6 @@
       document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
       document.querySelector(`.form-step[data-step="${step}"]`).classList.add('active');
       document.getElementById('stepBadge').textContent = `${step} of ${totalSteps}`;
-      
-      // Update dots
       document.querySelectorAll('.progress-dot').forEach((dot, i) => {
         dot.classList.remove('active', 'completed');
         if (i + 1 === step) dot.classList.add('active');
@@ -268,7 +243,6 @@
     }
     
     function nextStep(step) {
-      // Validate current step
       const currentStepEl = document.querySelector(`.form-step[data-step="${currentStep}"]`);
       const requiredFields = currentStepEl.querySelectorAll('[required]:not([type="checkbox"])');
       let valid = true;
@@ -284,7 +258,6 @@
         }
       });
       
-      // Check required checkboxes on step 4
       if (currentStep === 4) {
         const checkboxes = currentStepEl.querySelectorAll('input[type="checkbox"][required]');
         checkboxes.forEach(cb => {
@@ -296,7 +269,6 @@
       }
       
       if (!valid) return;
-      
       currentStep = step;
       showStep(step);
     }
@@ -306,8 +278,7 @@
       showStep(step);
     }
     
-    // Form submission
-    document.getElementById('bronzeForm').addEventListener('submit', function(e) {
+    document.getElementById('silverForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const form = e.target;
       const data = new FormData(form);
