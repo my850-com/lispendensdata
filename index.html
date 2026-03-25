@@ -89,9 +89,15 @@
     .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
     
+    .desktop-only { display: block; }
+    .nav-cta-mobile { display: none; margin-top: 1rem; text-align: center; background: var(--gold); color: var(--navy); padding: 1rem; border-radius: 8px; font-weight: 700; text-decoration: none; }
+    
     /* MOBILE RESPONSIVE */
     @media (max-width: 768px) {
-      .hamburger { display: flex; }
+      .hamburger { display: flex; margin-left: auto; }
+      .desktop-only { display: none !important; }
+      .nav-cta-mobile { display: block; }
+      .nav-container { padding: 0 15px; }
       .nav-menu { position: fixed; top: 60px; left: 0; right: 0; bottom: 0; background: var(--navy); flex-direction: column; padding: 2rem; transform: translateX(100%); transition: transform 0.3s; gap: 1.5rem; }
       .nav-menu.active { transform: translateX(0); }
       .nav-link { font-size: 1.2rem; }
