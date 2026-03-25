@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bronze Subscription | LisPendensData</title>
+  <style>
+    :root {
+      --navy: #1a3a5c;
+      --green: #2d5a3d;
+      --gold: #c9a227;
+      --white: #ffffff;
+      --light: #f8f9fa;
+      --text: #2c3e50;
+      --blue: #1976d2;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--light);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container { max-width: 600px; margin: 0 auto; }
+    
+    /* Header */
+    .header { text-align: center; padding: 40px 20px 30px; }
+    .logo { font-size: 1.8rem; font-weight: 700; color: var(--navy); text-decoration: none; display: inline-block; margin-bottom: 10px; }
+    .logo span { color: var(--gold); }
+    .badge { display: inline-block; background: #e3f2fd; color: var(--navy); padding: 8px 20px; border-radius: 20px; font-size: 0.9rem; font-weight: 500; margin-top: 15px; }
+    .badge strong { color: var(--blue); }
+    
+    /* Title */
+    h1 { font-size: 2rem; color: var(--navy); margin-bottom: 15px; text-align: center; }
+    .subtitle { color: #666; text-align: center; margin-bottom: 30px; line-height: 1.6; }
+    .subtitle strong { color: var(--navy); }
+    
+    /* Features */
+    .features { background: var(--white); padding: 25px; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .features h3 { color: var(--navy); font-size: 1.1rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+    .features ul { list-style: none; }
+    .features li { padding: 10px 0; padding-left: 28px; position: relative; color: #555; border-bottom: 1px solid #f0f0f0; }
+    .features li:last-child { border-bottom: none; }
+    .features li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: bold; font-size: 1.1rem; }
+    
+    /* Form Card */
+    .form-card { background: var(--white); border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .step-indicator { text-align: center; margin-bottom: 25px; }
+    .step-badge { display: inline-block; background: var(--navy); color: var(--white); padding: 8px 24px; border-radius: 20px; font-size: 1rem; font-weight: 600; }
+    
+    /* Form Steps */
+    .form-step { display: none; }
+    .form-step.active { display: block; }
+    
+    /* Form Fields */
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; margin-bottom: 8px; color: var(--navy); font-weight: 500; font-size: 0.95rem; }
+    .form-group label .required { color: #d32f2f; }
+    .form-group input, .form-group select {
+      width: 100%; padding: 14px 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+      background: var(--white);
+    }
+    .form-group input:focus, .form-group select:focus {
+      outline: none; border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    
+    /* Select Styling */
+    .form-group select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+    
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 16px; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+    .btn-primary { background: var(--blue); color: var(--white); }
+    .btn-primary:hover { background: #1565c0; }
+    .btn-next::after { content: '→'; font-size: 1.2rem; }
+    .btn-prev { background: #f5f5f5; color: #666; margin-bottom: 10px; }
+    .btn-prev:hover { background: #e0e0e0; }
+    .btn-prev::before { content: '←'; margin-right: 8px; }
+    .btn-submit { background: var(--gold); color: var(--navy); }
+    .btn-submit:hover { background: #b8941f; }
+    
+    /* Progress Bar */
+    .progress { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
+    .progress-dot { width: 10px; height: 10px; border-radius: 50%; background: #e0e0e0; transition: all 0.3s; }
+    .progress-dot.active { background: var(--blue); }
+    .progress-dot.completed { background: var(--green); }
+    
+    /* Success */
+    .success-message { display: none; text-align: center; padding: 40px 20px; }
+    .success-message.show { display: block; }
+    .success-icon { width: 80px; height: 80px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: white; font-size: 40px; }
+    
+    /* Quote Info */
+    .quote-info { background: #e3f2fd; padding: 15px; border-radius: 8px; margin: 20px 0; text-align: center; }
+    .quote-info p { color: var(--navy); font-size: 0.9rem; }
+    .phone { color: var(--blue); font-weight: 600; text-decoration: none; }
+    
+    @media (max-width: 480px) {
+      .form-row { grid-template-columns: 1fr; }
+      h1 { font-size: 1.6rem; }
+      .form-card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <a href="/" class="logo">LisPendens<span>Data</span></a>
+      <div class="badge">Used By: <strong>Lenders, Investors & Agents</strong></div>
+    </div>
+    
+    <h1>Weekly Florida Lis Pendens Update</h1>
+    <p class="subtitle">Bronze Subscription Customized For You.<br>Stay ahead of foreclosure opportunities with verified weekly Lis Pendens data delivered directly to your inbox.</p>
+    
+    <!-- Features -->
+    <div class="features">
+      <h3>📋 What's Included</h3>
+      <ul>
+        <li><strong>Weekly Lis Pendens Data</strong> for 1 Florida county</li>
+        <li><strong>Custom file formats</strong> (Excel, CSV, PDF, etc.)</li>
+        <li><strong>Personal onboarding session</strong> to confirm your target counties</li>
+        <li><strong>Additional counties</strong> available at $29 per county</li>
+        <li>Perfect for: first-time investors, real estate agents, mortgage lenders</li>
+      </ul>
+    </div>
+    
+    <!-- Quote Info -->
+    <div class="quote-info">
+      <p>📧 We'll email your quote after you complete all steps.<br>Questions? Call <a href="tel:850-998-8500" class="phone">(850) 998-8500</a></p>
+    </div>
+    
+    <!-- Form -->
+    <div class="form-card" id="formCard">
+      <div class="step-indicator">
+        <span class="step-badge" id="stepBadge">Step 1 of 3</span>
+      </div>
+      
+      <!-- Step 1: Personal Info -->
+      <form id="bronzeForm" action="https://script.google.com/macros/s/AKfycbwOT6cqQZKsYJXRVrO7F9pZWgJBVEQCocNvvSfJzjz6kszmeIZVwysHYM4mM12JwPov/exec" method="POST">
+        <input type="hidden" name="plan" value="Bronze">
+        
+        <!-- Step 1 -->
+        <div class="form-step active" data-step="1">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name <span class="required">*</span></label>
+              <input type="text" name="firstName" placeholder="Enter first name" required>
+            </div>
+            <div class="form-group">
+              <label>Last Name <span class="required">*</span></label>
+              <input type="text" name="lastName" placeholder="Enter last name" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address <span class="required">*</span></label>
+            <input type="email" name="email" placeholder="you@email.com" required>
+          </div>
+          <button type="button" class="btn btn-primary btn-next" onclick="nextStep(2)">Continue</button>
+        </div>
+        
+        <!-- Step 2: User Type & Format -->
+        <div class="form-step" data-step="2">
+          <div class="form-group">
+            <label>Data User Type <span class="required">*</span></label>
+            <select name="userType" required>
+              <option value="">Please Select</option>
+              <option value="Real Estate Investor">Real Estate Investor</option>
+              <option value="Real Estate Agent">Real Estate Agent</option>
+              <option value="Mortgage Lender">Mortgage Lender</option>
+              <option value="Real Estate Attorney">Real Estate Attorney</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Preferred Data Format <span class="required">*</span></label>
+            <select name="dataFormat" required>
+              <option value="">Please Select Data Type</option>
+              <option value="CSV File">CSV File</option>
+              <option value="Excel Sheet">Excel Sheet</option>
+              <option value="PDF File">PDF File</option>
+              <option value="All Formats">All Formats</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn-prev" onclick="prevStep(1)">Back</button>
+          <button type="button" class="btn btn-primary btn-next" onclick="nextStep(3)">Continue</button>
+        </div>
+        
+        <!-- Step 3: County & Phone -->
+        <div class="form-step" data-step="3">
+          <div class="form-group">
+            <label>Primary County <span class="required">*</span></label>
+            <select name="county" required>
+              <option value="">Select your Florida county</option>
+              <option value="Alachua">Alachua</option>
+              <option value="Bay">Bay</option>
+              <option value="Brevard">Brevard</option>
+              <option value="Broward">Broward</option>
+              <option value="Charlotte">Charlotte</option>
+              <option value="Citrus">Citrus</option>
+              <option value="Clay">Clay</option>
+              <option value="Collier">Collier</option>
+              <option value="Columbia">Columbia</option>
+              <option value="Duval">Duval</option>
+              <option value="Escambia">Escambia</option>
+              <option value="Flagler">Flagler</option>
+              <option value="Hillsborough">Hillsborough</option>
+              <option value="Indian River">Indian River</option>
+              <option value="Lake">Lake</option>
+              <option value="Lee">Lee</option>
+              <option value="Leon">Leon</option>
+              <option value="Manatee">Manatee</option>
+              <option value="Marion">Marion</option>
+              <option value="Martin">Martin</option>
+              <option value="Miami-Dade">Miami-Dade</option>
+              <option value="Monroe">Monroe</option>
+              <option value="Okaloosa">Okaloosa</option>
+              <option value="Orange">Orange</option>
+              <option value="Osceola">Osceola</option>
+              <option value="Palm Beach">Palm Beach</option>
+              <option value="Pasco">Pasco</option>
+              <option value="Pinellas">Pinellas</option>
+              <option value="Polk">Polk</option>
+              <option value="Sarasota">Sarasota</option>
+              <option value="Seminole">Seminole</option>
+              <option value="St. Johns">St. Johns</option>
+              <option value="St. Lucie">St. Lucie</option>
+              <option value="Sumter">Sumter</option>
+              <option value="Volusia">Volusia</option>
+              <option value="Walton">Walton</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Phone Number <span class="required">*</span></label>
+            <input type="tel" name="phone" placeholder="(850) 555-1234" required>
+          </div>
+          <div class="form-group">
+            <label>Additional Counties (Optional)</label>
+            <input type="text" name="additionalCounties" placeholder="e.g., Bay, Okaloosa (+$29 each)">
+          </div>
+          <button type="button" class="btn btn-prev" onclick="prevStep(2)">Back</button>
+          <button type="submit" class="btn btn-submit">Request Bronze Quote</button>
+        </div>
+      </form>
+      
+      <!-- Progress Dots -->
+      <div class="progress">
+        <span class="progress-dot active" data-dot="1"></span>
+        <span class="progress-dot" data-dot="2"></span>
+        <span class="progress-dot" data-dot="3"></span>
+      </div>
+    </div>
+    
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage">
+      <div class="success-icon">✓</div>
+      <h2>Quote Request Sent!</h2>
+      <p>Thank you! We'll email your Bronze subscription quote within 24 hours.</p>
+      <p style="margin-top: 15px; color: #666;">Check your inbox (and spam folder) for next steps.</p>
+      <a href="/" class="btn btn-primary" style="margin-top: 25px;">Back to Home</a>
+    </div>
+  </div>
+
+  <script>
+    let currentStep = 1;
+    
+    function showStep(step) {
+      document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+      document.querySelector(`.form-step[data-step="${step}"]`).classList.add('active');
+      document.getElementById('stepBadge').textContent = `Step ${step} of 3`;
+      
+      // Update dots
+      document.querySelectorAll('.progress-dot').forEach((dot, i) => {
+        dot.classList.remove('active', 'completed');
+        if (i + 1 === step) dot.classList.add('active');
+        if (i + 1 < step) dot.classList.add('completed');
+      });
+    }
+    
+    function nextStep(step) {
+      // Validate current step
+      const currentStepEl = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+      const requiredFields = currentStepEl.querySelectorAll('[required]');
+      let valid = true;
+      
+      requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+          field.style.borderColor = '#d32f2f';
+          valid = false;
+        } else {
+          field.style.borderColor = '#e0e0e0';
+        }
+      });
+      
+      if (!valid) return;
+      
+      currentStep = step;
+      showStep(step);
+    }
+    
+    function prevStep(step) {
+      currentStep = step;
+      showStep(step);
+    }
+    
+    // Form submission
+    document.getElementById('bronzeForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      
+      fetch(form.action, {
+        method: 'POST',
+        body: new URLSearchParams(data),
+        mode: 'no-cors'
+      }).then(() => {
+        document.getElementById('formCard').style.display = 'none';
+        document.getElementById('successMessage').classList.add('show');
+      }).catch(() => {
+        document.getElementById('formCard').style.display = 'none';
+        document.getElementById('successMessage').classList.add('show');
+      });
+    });
+  </script>
+</body>
+</html>
