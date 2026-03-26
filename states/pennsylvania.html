@@ -3,95 +3,141 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pennsylvania Lis Pendens Data | Philadelphia, Pittsburgh, Allentown Foreclosures</title>
-  <meta name="description" content="Fresh Lis Pendens filings from Pennsylvania counties. Daily and weekly pre-foreclosure data for Philadelphia, Pittsburgh, Allentown. Real estate investor insights. Starting at $49.">
-  <meta name="keywords" content="Pennsylvania lis pendens, Pennsylvania foreclosure data, Philadelphia, Pittsburgh, Allentown, Pennsylvania real estate investing">
+  <title>Pennsylvania Lis Pendens Data | Philadelphia, Pittsburgh Foreclosure Listings</title>
+  <meta name="description" content="Fresh Lis Pendens filings from Pennsylvania counties. Daily and weekly pre-foreclosure data for Philadelphia, Allegheny County, and all 67 PA counties. Starting at $49.">
+  <meta name="keywords" content="Pennsylvania lis pendens, Pennsylvania foreclosure data, Philadelphia foreclosure listings, Allegheny County lis pendens, Pittsburgh pre-foreclosure">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%231a3a5c' width='32' height='32' rx='6'/%3E%3Ctext x='50%25' y='55%25' font-size='14' text-anchor='middle' fill='%23c9a227' font-weight='bold' dominant-baseline='middle'%3EL%3C/text%3E%3C/svg%3E">
   <style>
-    :root { --navy: #1a3a5c; --gold: #c9a227; --white: #ffffff; --light: #f8f9fa; --text: #2c3e50; --blue: #1976d2; }
+    :root { --navy: #1a3a5c; --green: #2d5a3d; --gold: #c9a227; --white: #ffffff; --light: #f8f9fa; --text: #2c3e50; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); line-height: 1.6; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--text); line-height: 1.6; }
     .navbar { background: var(--navy); padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; }
     .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
     .logo { color: var(--white); font-size: 1.5rem; font-weight: 700; text-decoration: none; }
     .logo span { color: var(--gold); }
-    .hamburger { display: none; flex-direction: column; justify-content: space-around; width: 30px; height: 24px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1002; margin-left: auto; }
-    .hamburger span { width: 100%; height: 3px; background: var(--gold); border-radius: 2px; transition: all 0.3s; }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
-    .nav-menu { display: flex; }
-    .nav-link { color: var(--white); text-decoration: none; margin-left: 20px; font-weight: 500; }
-    @media (max-width: 768px) { .hamburger { display: flex; } .nav-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; bottom: 0; background: var(--navy); padding: 2rem; flex-direction: column; gap: 1.5rem; } .nav-menu.active { display: flex; } .nav-link { margin-left: 0; } }
-    .hero { background: linear-gradient(135deg, var(--navy) 0%, #2a5298 100%); color: var(--white); padding: 130px 20px 60px; }
-    .hero-content { max-width: 900px; margin: 0 auto; }
-    .breadcrumb { color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 15px; }
-    .breadcrumb a { color: var(--gold); text-decoration: none; }
-    .hero h1 { font-size: 2.2rem; margin-bottom: 15px; }
-    .hero p { font-size: 1rem; opacity: 0.9; line-height: 1.6; }
+    .nav-link { color: rgba(255,255,255,0.8); text-decoration: none; margin-left: 20px; }
+    .nav-link:hover { color: var(--gold); }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #2a5298 100%); color: white; padding: 140px 20px 80px; text-align: center; }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 15px; }
+    .hero p { font-size: 1.1rem; max-width: 700px; margin: 0 auto 25px; opacity: 0.9; }
     .hero-cta { display: inline-block; padding: 14px 35px; background: var(--gold); color: var(--navy); border-radius: 8px; text-decoration: none; font-weight: 700; margin-top: 15px; }
-    .content { max-width: 900px; margin: 0 auto; padding: 50px 20px; }
-    .county-intro { background: var(--white); padding: 30px; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 4px solid var(--gold); }
-    .county-intro h2 { color: var(--navy); font-size: 1.4rem; margin-bottom: 15px; }
-    .county-intro p { color: #555; line-height: 1.7; margin-bottom: 12px; }
-    .cities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 20px 0; }
-    .city-item { background: var(--white); padding: 15px; border-radius: 6px; text-align: center; border: 1px solid #ddd; }
-    .cta-box { background: linear-gradient(135deg, var(--navy) 0%, #2a5298 100%); color: white; padding: 40px; border-radius: 12px; text-align: center; margin: 40px 0; }
-    .cta-box h3 { font-size: 1.5rem; margin-bottom: 15px; }
-    .cta-btn { display: inline-block; padding: 14px 35px; background: var(--gold); color: var(--navy); border-radius: 8px; text-decoration: none; font-weight: 700; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+    .section-title { color: var(--navy); font-size: 1.8rem; margin-bottom: 20px; }
+    .intro-text { color: #555; line-height: 1.8; margin-bottom: 30px; font-size: 1.05rem; }
+    .stats-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 40px 0; }
+    .stat-box { background: var(--white); padding: 25px; border-radius: 12px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 4px solid var(--gold); }
+    .stat-number { font-size: 2.5rem; font-weight: 700; color: var(--navy); }
+    .stat-label { color: #666; font-size: 0.9rem; }
+    .cities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 30px 0; }
+    .city-card { background: var(--white); padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 2px solid #eee; transition: all 0.3s; }
+    .city-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+    .city-card h3 { color: var(--navy); font-size: 1.1rem; margin-bottom: 5px; }
+    .city-card p { color: #666; font-size: 0.85rem; }
+    .counties-section { background: var(--light); padding: 60px 20px; }
+    .counties-container { max-width: 1100px; margin: 0 auto; }
+    .counties-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin-top: 25px; }
+    .county-link { display: block; padding: 12px; background: var(--white); border-radius: 6px; text-align: center; color: var(--navy); text-decoration: none; font-size: 0.9rem; transition: all 0.2s; border: 1px solid #ddd; }
+    .county-link:hover { background: var(--navy); color: var(--white); }
+    .cta-section { background: linear-gradient(135deg, var(--navy) 0%, #2a5298 100%); color: white; padding: 80px 20px; text-align: center; }
+    .cta-section h2 { font-size: 2rem; margin-bottom: 15px; }
+    .cta-section p { max-width: 600px; margin: 0 auto 25px; opacity: 0.9; }
+    .cta-btn { display: inline-block; padding: 15px 40px; background: var(--gold); color: var(--navy); text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 1.1rem; }
+    .footer { background: var(--navy); color: var(--white); padding: 40px 20px; text-align: center; }
+    @media (max-width: 768px) { .hero h1 { font-size: 1.9rem; } .stats-bar { grid-template-columns: 1fr; } .cities-grid { grid-template-columns: repeat(2, 1fr); } }
   </style>
 </head>
 <body>
   <nav class="navbar">
     <div class="nav-container">
       <a href="../" class="logo">LisPendens<span>Data</span></a>
-      <button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
-      <div class="nav-menu" id="navMenu">
-        <a href="../" class="nav-link">Home</a>
-        <a href="../#pricing" class="nav-link">Pricing</a>
-      </div>
+      <a href="../" class="nav-link">← Back to Home</a>
     </div>
   </nav>
 
   <section class="hero">
-    <div class="hero-content">
-      <div class="breadcrumb"><a href="../">Home</a> / Pennsylvania</div>
-      <h1>Pennsylvania Lis Pendens Data</h1>
-      <p>Fresh foreclosure filings from Philadelphia, Pittsburgh, Allentown. Daily and weekly pre-foreclosure data for real estate investors across all 67 Pennsylvania counties.</p>
-      <a href="../#pricing" class="hero-cta">Get Pennsylvania Data →</a>
-    </div>
+    <h1>Pennsylvania Lis Pendens Data</h1>
+    <p>Fresh foreclosure filings from Philadelphia to Pittsburgh. Daily and weekly pre-foreclosure data for real estate investors across all 67 Pennsylvania counties.</p>
+    <a href="../#pricing" class="hero-cta">Get Pennsylvania Data →</a>
   </section>
 
   <section class="content">
-    <div class="county-intro">
-      <h2>Why Pennsylvania Pre-Foreclosures?</h2>
-      <p>Pennsylvania offers unique real estate investment opportunities through its diverse housing markets. Major metro areas like Philadelphia, Pittsburgh, Allentown consistently produce foreclosure filings that represent significant discount opportunities for prepared investors.</p>
-      <p>Our daily Lis Pendens data tracks every filing from Pennsylvania county courthouses, delivering fresh pre-foreclosure leads within 24-48 hours of recording. Whether you're targeting urban revitalization or suburban growth markets, Pennsylvania delivers.</p>
-    </div>
+    <h2 class="section-title">Why Pennsylvania Pre-Foreclosures?</h2>
+    <p class="intro-text">
+      Pennsylvania ranks among the top states for real estate investment opportunities with over 13 million residents. The Philadelphia metro area alone accounts for 6 million people, creating significant lis pendens filing volume. As a judicial foreclosure state, Pennsylvania requires lenders to file suit, creating public records that savvy investors can track.
+    </p>
     
-    <div class="county-intro">
-      <h2>Major Pennsylvania Markets</h2>
-      <div class="cities-grid">
-        <div class="city-item"><strong>Philadelphia</strong></div>
-        <div class="city-item"><strong>Pittsburgh</strong></div>
-        <div class="city-item"><strong>Allentown</strong></div>
-        <div class="city-item"><strong>Erie</strong></div>
-        <div class="city-item"><strong>Reading</strong></div>
+    <div class="stats-bar">
+      <div class="stat-box">
+        <div class="stat-number">67</div>
+        <div class="stat-label">Pennsylvania Counties</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">Daily</div>
+        <div class="stat-label">Data Delivery</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">24hr</div>
+        <div class="stat-label">From Courthouse to You</div>
       </div>
     </div>
     
-    <div class="cta-box">
-      <h3>Get Pennsylvania Lis Pendens Data</h3>
-      <p>Start at $49/month for weekly updates. Daily delivery available. No long-term contracts.</p>
-      <a href="../#pricing" class="cta-btn">View Pricing</a>
+    <h2 class="section-title">Major Pennsylvania Markets We Cover</h2>
+    <p class="intro-text">Select your primary county for Lis Pendens data coverage. We cover every courthouse from Philadelphia to Erie.</p>
+    <div class="cities-grid">
+      <div class="city-card">
+        <h3>Philadelphia County</h3>
+        <p>6M metro, high urban volume</p>
+      </div>
+      <div class="city-card">
+        <h3>Allegheny County</h3>
+        <p>Pittsburgh metro, steady activity</p>
+      </div>
+      <div class="city-card">
+        <h3>Montgomery County</h3>
+        <p>Philadelphia suburbs, affluent</p>
+      </div>
+      <div class="city-card">
+        <h3>Bucks County</h3>
+        <p>NE Philly suburbs, strong market</p>
+      </div>
+      <div class="city-card">
+        <h3>Delaware County</h3>
+        <p>SW Philly suburbs, near airport</p>
+      </div>
+      <div class="city-card">
+        <h3>Lehigh Valley</h3>
+        <p>Allentown-Bethlehem, industrial</p>
+      </div>
     </div>
   </section>
 
-  <script>
-    document.getElementById('hamburgerBtn').addEventListener('click', function() {
-      this.classList.toggle('active');
-      document.getElementById('navMenu').classList.toggle('active');
-    });
-  </script>
+  <section class="counties-section">
+    <div class="counties-container">
+      <h2 class="section-title">Featured Pennsylvania Counties</h2>
+      <p class="intro-text">County pages with detailed lis pendens information coming soon. Contact us for priority county coverage.</p>
+      
+      <div class="counties-grid">
+        <a href="#" class="county-link" onclick="alert('County page coming soon'); return false;">Philadelphia</a>
+        <a href="#" class="county-link" onclick="alert('County page coming soon'); return false;">Allegheny</a>
+        <a href="#" class="county-link" onclick="alert('County page coming soon'); return false;">Montgomery</a>
+        <a href="#" class="county-link" onclick="alert('County page coming soon'); return false;">Bucks</a>
+        <a href="#" class="county-link" onclick="alert('County page coming soon'); return false;">Delaware</a>
+        <a href="#" class="county-link" onclick="alert('County page coming soon'); return false;">Chester</a>
+        <a href="#" class="county-link" onclick="alert('County page coming soon'); return false;">Lehigh</a>
+        <a href="#" class="county-link" onclick="alert('County page coming soon'); return false;">Northampton</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Ready for Pennsylvania Foreclosure Data?</h2>
+    <p>Join investors tracking lis pendens across Pennsylvania. Daily or weekly delivery available. Starting at $49/month.</p>
+    <a href="../#pricing" class="cta-btn">View Pennsylvania Pricing</a>
+  </section>
+
+  <footer class="footer">
+    <p>© 2024 LisPendensData.com — Pennsylvania Foreclosure Data Specialists</p>
+    <p style="margin-top: 10px; opacity: 0.8;">67 Counties • Daily & Weekly Updates • Philadelphia-Pittsburgh Focus</p>
+  </footer>
 </body>
 </html>
